@@ -1,0 +1,639 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0E065E1316A091580040ADCB /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E065E0116A091580040ADCB /* AFHTTPClient.m */; };
+		0E065E1416A091580040ADCB /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E065E0116A091580040ADCB /* AFHTTPClient.m */; };
+		0E065E1516A091580040ADCB /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E065E0316A091580040ADCB /* AFHTTPRequestOperation.m */; };
+		0E065E1616A091580040ADCB /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E065E0316A091580040ADCB /* AFHTTPRequestOperation.m */; };
+		0E065E1716A091580040ADCB /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E065E0516A091580040ADCB /* AFImageRequestOperation.m */; };
+		0E065E1816A091580040ADCB /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E065E0516A091580040ADCB /* AFImageRequestOperation.m */; };
+		0E065E1916A091580040ADCB /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E065E0716A091580040ADCB /* AFJSONRequestOperation.m */; };
+		0E065E1A16A091580040ADCB /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E065E0716A091580040ADCB /* AFJSONRequestOperation.m */; };
+		0E065E1B16A091580040ADCB /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E065E0916A091580040ADCB /* AFNetworkActivityIndicatorManager.m */; };
+		0E065E1C16A091580040ADCB /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E065E0916A091580040ADCB /* AFNetworkActivityIndicatorManager.m */; };
+		0E065E1D16A091580040ADCB /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E065E0C16A091580040ADCB /* AFPropertyListRequestOperation.m */; };
+		0E065E1E16A091580040ADCB /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E065E0C16A091580040ADCB /* AFPropertyListRequestOperation.m */; };
+		0E065E1F16A091580040ADCB /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E065E0E16A091580040ADCB /* AFURLConnectionOperation.m */; };
+		0E065E2016A091580040ADCB /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E065E0E16A091580040ADCB /* AFURLConnectionOperation.m */; };
+		0E065E2116A091580040ADCB /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E065E1016A091580040ADCB /* AFXMLRequestOperation.m */; };
+		0E065E2216A091580040ADCB /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E065E1016A091580040ADCB /* AFXMLRequestOperation.m */; };
+		0E065E2316A091580040ADCB /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E065E1216A091580040ADCB /* UIImageView+AFNetworking.m */; };
+		0E065E2416A091580040ADCB /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E065E1216A091580040ADCB /* UIImageView+AFNetworking.m */; };
+		0E6B1F3B16A0BBE200659839 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E6B1F3A16A0BBE200659839 /* SystemConfiguration.framework */; };
+		0E6B1F3E16A0BBED00659839 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E6B1F3D16A0BBED00659839 /* MobileCoreServices.framework */; };
+		0E97440D165AAD11000C23EB /* OCCurrencyEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E97440C165AAD11000C23EB /* OCCurrencyEditViewController.m */; };
+		0E974411165AAD4A000C23EB /* OCOtherPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E974410165AAD4A000C23EB /* OCOtherPreferencesViewController.m */; };
+		0E974414165AC420000C23EB /* OCPreferencesPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E974413165AC420000C23EB /* OCPreferencesPasswordViewController.m */; };
+		0E974417165AC481000C23EB /* OCWalletItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E974416165AC481000C23EB /* OCWalletItemsViewController.m */; };
+		0E97441A165AE0E4000C23EB /* OCPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E974419165AE0E4000C23EB /* OCPayViewController.m */; };
+		0EF001BF169AE29500E13A69 /* OpenCoinWalletTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0EF001BC169AE29500E13A69 /* OpenCoinWalletTests-Info.plist */; };
+		0EF001C2169AE29500E13A69 /* OpenCoinWalletTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF001BE169AE29500E13A69 /* OpenCoinWalletTests.m */; };
+		0EF001CA169AE31300E13A69 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0EF001C8169AE31300E13A69 /* InfoPlist.strings */; };
+		0EF001CB169AF84500E13A69 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EF099B3165AA89200F19D8A /* CoreData.framework */; };
+		0EF001CD169AFA3D00E13A69 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EF001CC169AFA3D00E13A69 /* SenTestingKit.framework */; };
+		0EF001D1169AFC5E00E13A69 /* OCCurrency.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF001D0169AFC5E00E13A69 /* OCCurrency.m */; };
+		0EF001D2169AFC5E00E13A69 /* OCCurrency.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF001D0169AFC5E00E13A69 /* OCCurrency.m */; };
+		0EF099B4165AA89200F19D8A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EF099B3165AA89200F19D8A /* CoreData.framework */; };
+		0EF099B7165AA94E00F19D8A /* OCPreferencesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF099B6165AA94E00F19D8A /* OCPreferencesTableViewController.m */; };
+		0EF099C4165AABFF00F19D8A /* OCCurrenciesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF099C3165AABFF00F19D8A /* OCCurrenciesTableViewController.m */; };
+		0EFE4A161656ED7000B01440 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFE4A151656ED7000B01440 /* UIKit.framework */; };
+		0EFE4A181656ED7000B01440 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFE4A171656ED7000B01440 /* Foundation.framework */; };
+		0EFE4A1A1656ED7000B01440 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFE4A191656ED7000B01440 /* CoreGraphics.framework */; };
+		0EFE4A201656ED7000B01440 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0EFE4A1E1656ED7000B01440 /* InfoPlist.strings */; };
+		0EFE4A221656ED7000B01440 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFE4A211656ED7000B01440 /* main.m */; };
+		0EFE4A261656ED7000B01440 /* OCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFE4A251656ED7000B01440 /* OCAppDelegate.m */; };
+		0EFE4A281656ED7000B01440 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EFE4A271656ED7000B01440 /* Default.png */; };
+		0EFE4A2A1656ED7000B01440 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EFE4A291656ED7000B01440 /* Default@2x.png */; };
+		0EFE4A2C1656ED7000B01440 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EFE4A2B1656ED7000B01440 /* Default-568h@2x.png */; };
+		0EFE4A2F1656ED7000B01440 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EFE4A2D1656ED7000B01440 /* MainStoryboard_iPhone.storyboard */; };
+		0EFE4A321656ED7100B01440 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EFE4A301656ED7100B01440 /* MainStoryboard_iPad.storyboard */; };
+		0EFE4A351656ED7100B01440 /* OCFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFE4A341656ED7100B01440 /* OCFirstViewController.m */; };
+		0EFE4A491656ED7100B01440 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFE4A151656ED7000B01440 /* UIKit.framework */; };
+		0EFE4A4A1656ED7100B01440 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFE4A171656ED7000B01440 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0EFE4A4B1656ED7100B01440 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0EFE4A081656ED7000B01440 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0EFE4A101656ED7000B01440;
+			remoteInfo = OpenCoinWallet;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0E065E0016A091580040ADCB /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
+		0E065E0116A091580040ADCB /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
+		0E065E0216A091580040ADCB /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		0E065E0316A091580040ADCB /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		0E065E0416A091580040ADCB /* AFImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFImageRequestOperation.h; sourceTree = "<group>"; };
+		0E065E0516A091580040ADCB /* AFImageRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFImageRequestOperation.m; sourceTree = "<group>"; };
+		0E065E0616A091580040ADCB /* AFJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFJSONRequestOperation.h; sourceTree = "<group>"; };
+		0E065E0716A091580040ADCB /* AFJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFJSONRequestOperation.m; sourceTree = "<group>"; };
+		0E065E0816A091580040ADCB /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
+		0E065E0916A091580040ADCB /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
+		0E065E0A16A091580040ADCB /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		0E065E0B16A091580040ADCB /* AFPropertyListRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPropertyListRequestOperation.h; sourceTree = "<group>"; };
+		0E065E0C16A091580040ADCB /* AFPropertyListRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFPropertyListRequestOperation.m; sourceTree = "<group>"; };
+		0E065E0D16A091580040ADCB /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		0E065E0E16A091580040ADCB /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		0E065E0F16A091580040ADCB /* AFXMLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFXMLRequestOperation.h; sourceTree = "<group>"; };
+		0E065E1016A091580040ADCB /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
+		0E065E1116A091580040ADCB /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
+		0E065E1216A091580040ADCB /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		0E6B1F3A16A0BBE200659839 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		0E6B1F3D16A0BBED00659839 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		0E97440B165AAD11000C23EB /* OCCurrencyEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCCurrencyEditViewController.h; sourceTree = "<group>"; };
+		0E97440C165AAD11000C23EB /* OCCurrencyEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCCurrencyEditViewController.m; sourceTree = "<group>"; };
+		0E97440F165AAD4A000C23EB /* OCOtherPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCOtherPreferencesViewController.h; sourceTree = "<group>"; };
+		0E974410165AAD4A000C23EB /* OCOtherPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCOtherPreferencesViewController.m; sourceTree = "<group>"; };
+		0E974412165AC420000C23EB /* OCPreferencesPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCPreferencesPasswordViewController.h; sourceTree = "<group>"; };
+		0E974413165AC420000C23EB /* OCPreferencesPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCPreferencesPasswordViewController.m; sourceTree = "<group>"; };
+		0E974415165AC481000C23EB /* OCWalletItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCWalletItemsViewController.h; sourceTree = "<group>"; };
+		0E974416165AC481000C23EB /* OCWalletItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCWalletItemsViewController.m; sourceTree = "<group>"; };
+		0E974418165AE0E4000C23EB /* OCPayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCPayViewController.h; sourceTree = "<group>"; };
+		0E974419165AE0E4000C23EB /* OCPayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCPayViewController.m; sourceTree = "<group>"; };
+		0EF001BC169AE29500E13A69 /* OpenCoinWalletTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "OpenCoinWalletTests-Info.plist"; path = "test/OpenCoinWalletTests-Info.plist"; sourceTree = SOURCE_ROOT; };
+		0EF001BD169AE29500E13A69 /* OpenCoinWalletTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OpenCoinWalletTests.h; path = test/OpenCoinWalletTests.h; sourceTree = SOURCE_ROOT; };
+		0EF001BE169AE29500E13A69 /* OpenCoinWalletTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OpenCoinWalletTests.m; path = test/OpenCoinWalletTests.m; sourceTree = SOURCE_ROOT; };
+		0EF001C9169AE31300E13A69 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = test/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
+		0EF001CC169AFA3D00E13A69 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		0EF001CF169AFC5E00E13A69 /* OCCurrency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OCCurrency.h; path = model/OCCurrency.h; sourceTree = "<group>"; };
+		0EF001D0169AFC5E00E13A69 /* OCCurrency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OCCurrency.m; path = model/OCCurrency.m; sourceTree = "<group>"; };
+		0EF099B3165AA89200F19D8A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		0EF099B5165AA94E00F19D8A /* OCPreferencesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCPreferencesTableViewController.h; sourceTree = "<group>"; };
+		0EF099B6165AA94E00F19D8A /* OCPreferencesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCPreferencesTableViewController.m; sourceTree = "<group>"; };
+		0EF099C2165AABFF00F19D8A /* OCCurrenciesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCCurrenciesTableViewController.h; sourceTree = "<group>"; };
+		0EF099C3165AABFF00F19D8A /* OCCurrenciesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCCurrenciesTableViewController.m; sourceTree = "<group>"; };
+		0EFE4A111656ED7000B01440 /* OpenCoinWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenCoinWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0EFE4A151656ED7000B01440 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		0EFE4A171656ED7000B01440 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		0EFE4A191656ED7000B01440 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		0EFE4A1D1656ED7000B01440 /* OpenCoinWallet-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OpenCoinWallet-Info.plist"; sourceTree = "<group>"; };
+		0EFE4A1F1656ED7000B01440 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0EFE4A211656ED7000B01440 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0EFE4A231656ED7000B01440 /* OpenCoinWallet-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OpenCoinWallet-Prefix.pch"; sourceTree = "<group>"; };
+		0EFE4A241656ED7000B01440 /* OCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCAppDelegate.h; sourceTree = "<group>"; };
+		0EFE4A251656ED7000B01440 /* OCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCAppDelegate.m; sourceTree = "<group>"; };
+		0EFE4A271656ED7000B01440 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		0EFE4A291656ED7000B01440 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		0EFE4A2B1656ED7000B01440 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		0EFE4A2E1656ED7000B01440 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		0EFE4A311656ED7100B01440 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		0EFE4A331656ED7100B01440 /* OCFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCFirstViewController.h; sourceTree = "<group>"; };
+		0EFE4A341656ED7100B01440 /* OCFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCFirstViewController.m; sourceTree = "<group>"; };
+		0EFE4A461656ED7100B01440 /* OpenCoinWalletTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenCoinWalletTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0EFE4A0E1656ED7000B01440 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E6B1F3E16A0BBED00659839 /* MobileCoreServices.framework in Frameworks */,
+				0E6B1F3B16A0BBE200659839 /* SystemConfiguration.framework in Frameworks */,
+				0EF099B4165AA89200F19D8A /* CoreData.framework in Frameworks */,
+				0EFE4A161656ED7000B01440 /* UIKit.framework in Frameworks */,
+				0EFE4A181656ED7000B01440 /* Foundation.framework in Frameworks */,
+				0EFE4A1A1656ED7000B01440 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0EFE4A421656ED7100B01440 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EF001CD169AFA3D00E13A69 /* SenTestingKit.framework in Frameworks */,
+				0EF001CB169AF84500E13A69 /* CoreData.framework in Frameworks */,
+				0EFE4A491656ED7100B01440 /* UIKit.framework in Frameworks */,
+				0EFE4A4A1656ED7100B01440 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0E065DFF16A091580040ADCB /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				0E065E0016A091580040ADCB /* AFHTTPClient.h */,
+				0E065E0116A091580040ADCB /* AFHTTPClient.m */,
+				0E065E0216A091580040ADCB /* AFHTTPRequestOperation.h */,
+				0E065E0316A091580040ADCB /* AFHTTPRequestOperation.m */,
+				0E065E0416A091580040ADCB /* AFImageRequestOperation.h */,
+				0E065E0516A091580040ADCB /* AFImageRequestOperation.m */,
+				0E065E0616A091580040ADCB /* AFJSONRequestOperation.h */,
+				0E065E0716A091580040ADCB /* AFJSONRequestOperation.m */,
+				0E065E0816A091580040ADCB /* AFNetworkActivityIndicatorManager.h */,
+				0E065E0916A091580040ADCB /* AFNetworkActivityIndicatorManager.m */,
+				0E065E0A16A091580040ADCB /* AFNetworking.h */,
+				0E065E0B16A091580040ADCB /* AFPropertyListRequestOperation.h */,
+				0E065E0C16A091580040ADCB /* AFPropertyListRequestOperation.m */,
+				0E065E0D16A091580040ADCB /* AFURLConnectionOperation.h */,
+				0E065E0E16A091580040ADCB /* AFURLConnectionOperation.m */,
+				0E065E0F16A091580040ADCB /* AFXMLRequestOperation.h */,
+				0E065E1016A091580040ADCB /* AFXMLRequestOperation.m */,
+				0E065E1116A091580040ADCB /* UIImageView+AFNetworking.h */,
+				0E065E1216A091580040ADCB /* UIImageView+AFNetworking.m */,
+			);
+			name = AFNetworking;
+			path = ../3rdParty/AFNetworking/AFNetworking;
+			sourceTree = "<group>";
+		};
+		0EF001CE169AFC0200E13A69 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				0EF001CF169AFC5E00E13A69 /* OCCurrency.h */,
+				0EF001D0169AFC5E00E13A69 /* OCCurrency.m */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		0EFE4A061656ED7000B01440 = {
+			isa = PBXGroup;
+			children = (
+				0E6B1F3D16A0BBED00659839 /* MobileCoreServices.framework */,
+				0E6B1F3A16A0BBE200659839 /* SystemConfiguration.framework */,
+				0EFE4A1B1656ED7000B01440 /* src */,
+				0EFE4A4D1656ED7100B01440 /* tests */,
+				0EFE4A141656ED7000B01440 /* Frameworks */,
+				0EFE4A121656ED7000B01440 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0EFE4A121656ED7000B01440 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0EFE4A111656ED7000B01440 /* OpenCoinWallet.app */,
+				0EFE4A461656ED7100B01440 /* OpenCoinWalletTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0EFE4A141656ED7000B01440 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0EF001CC169AFA3D00E13A69 /* SenTestingKit.framework */,
+				0EF099B3165AA89200F19D8A /* CoreData.framework */,
+				0EFE4A151656ED7000B01440 /* UIKit.framework */,
+				0EFE4A171656ED7000B01440 /* Foundation.framework */,
+				0EFE4A191656ED7000B01440 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0EFE4A1B1656ED7000B01440 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				0E065DFF16A091580040ADCB /* AFNetworking */,
+				0EF001CE169AFC0200E13A69 /* model */,
+				0E974418165AE0E4000C23EB /* OCPayViewController.h */,
+				0E974419165AE0E4000C23EB /* OCPayViewController.m */,
+				0E974415165AC481000C23EB /* OCWalletItemsViewController.h */,
+				0E974416165AC481000C23EB /* OCWalletItemsViewController.m */,
+				0E97440F165AAD4A000C23EB /* OCOtherPreferencesViewController.h */,
+				0EF099C2165AABFF00F19D8A /* OCCurrenciesTableViewController.h */,
+				0EF099C3165AABFF00F19D8A /* OCCurrenciesTableViewController.m */,
+				0E97440B165AAD11000C23EB /* OCCurrencyEditViewController.h */,
+				0E97440C165AAD11000C23EB /* OCCurrencyEditViewController.m */,
+				0E974412165AC420000C23EB /* OCPreferencesPasswordViewController.h */,
+				0E974413165AC420000C23EB /* OCPreferencesPasswordViewController.m */,
+				0E974410165AAD4A000C23EB /* OCOtherPreferencesViewController.m */,
+				0EF099B5165AA94E00F19D8A /* OCPreferencesTableViewController.h */,
+				0EF099B6165AA94E00F19D8A /* OCPreferencesTableViewController.m */,
+				0EFE4A241656ED7000B01440 /* OCAppDelegate.h */,
+				0EFE4A251656ED7000B01440 /* OCAppDelegate.m */,
+				0EFE4A2D1656ED7000B01440 /* MainStoryboard_iPhone.storyboard */,
+				0EFE4A301656ED7100B01440 /* MainStoryboard_iPad.storyboard */,
+				0EFE4A331656ED7100B01440 /* OCFirstViewController.h */,
+				0EFE4A341656ED7100B01440 /* OCFirstViewController.m */,
+				0EFE4A1C1656ED7000B01440 /* Supporting Files */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		0EFE4A1C1656ED7000B01440 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0EFE4A1D1656ED7000B01440 /* OpenCoinWallet-Info.plist */,
+				0EFE4A1E1656ED7000B01440 /* InfoPlist.strings */,
+				0EFE4A211656ED7000B01440 /* main.m */,
+				0EFE4A231656ED7000B01440 /* OpenCoinWallet-Prefix.pch */,
+				0EFE4A271656ED7000B01440 /* Default.png */,
+				0EFE4A291656ED7000B01440 /* Default@2x.png */,
+				0EFE4A2B1656ED7000B01440 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0EFE4A4D1656ED7100B01440 /* tests */ = {
+			isa = PBXGroup;
+			children = (
+				0EF001BD169AE29500E13A69 /* OpenCoinWalletTests.h */,
+				0EF001BE169AE29500E13A69 /* OpenCoinWalletTests.m */,
+				0EFE4A4E1656ED7100B01440 /* Supporting Files */,
+			);
+			name = tests;
+			path = OpenCoinWalletTests;
+			sourceTree = "<group>";
+		};
+		0EFE4A4E1656ED7100B01440 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0EF001C8169AE31300E13A69 /* InfoPlist.strings */,
+				0EF001BC169AE29500E13A69 /* OpenCoinWalletTests-Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0EFE4A101656ED7000B01440 /* OpenCoinWallet */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0EFE4A581656ED7100B01440 /* Build configuration list for PBXNativeTarget "OpenCoinWallet" */;
+			buildPhases = (
+				0EFE4A0D1656ED7000B01440 /* Sources */,
+				0EFE4A0E1656ED7000B01440 /* Frameworks */,
+				0EFE4A0F1656ED7000B01440 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OpenCoinWallet;
+			productName = OpenCoinWallet;
+			productReference = 0EFE4A111656ED7000B01440 /* OpenCoinWallet.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0EFE4A451656ED7100B01440 /* OpenCoinWalletTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0EFE4A5B1656ED7100B01440 /* Build configuration list for PBXNativeTarget "OpenCoinWalletTests" */;
+			buildPhases = (
+				0EFE4A411656ED7100B01440 /* Sources */,
+				0EFE4A421656ED7100B01440 /* Frameworks */,
+				0EFE4A431656ED7100B01440 /* Resources */,
+				0EFE4A441656ED7100B01440 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0EFE4A4C1656ED7100B01440 /* PBXTargetDependency */,
+			);
+			name = OpenCoinWalletTests;
+			productName = OpenCoinWalletTests;
+			productReference = 0EFE4A461656ED7100B01440 /* OpenCoinWalletTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0EFE4A081656ED7000B01440 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = OC;
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Opencoin Team";
+			};
+			buildConfigurationList = 0EFE4A0B1656ED7000B01440 /* Build configuration list for PBXProject "OpenCoinWallet" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 0EFE4A061656ED7000B01440;
+			productRefGroup = 0EFE4A121656ED7000B01440 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0EFE4A101656ED7000B01440 /* OpenCoinWallet */,
+				0EFE4A451656ED7100B01440 /* OpenCoinWalletTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0EFE4A0F1656ED7000B01440 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EFE4A201656ED7000B01440 /* InfoPlist.strings in Resources */,
+				0EFE4A281656ED7000B01440 /* Default.png in Resources */,
+				0EFE4A2A1656ED7000B01440 /* Default@2x.png in Resources */,
+				0EFE4A2C1656ED7000B01440 /* Default-568h@2x.png in Resources */,
+				0EFE4A2F1656ED7000B01440 /* MainStoryboard_iPhone.storyboard in Resources */,
+				0EFE4A321656ED7100B01440 /* MainStoryboard_iPad.storyboard in Resources */,
+				0EF001BF169AE29500E13A69 /* OpenCoinWalletTests-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0EFE4A431656ED7100B01440 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EF001CA169AE31300E13A69 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0EFE4A441656ED7100B01440 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0EFE4A0D1656ED7000B01440 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EFE4A221656ED7000B01440 /* main.m in Sources */,
+				0EFE4A261656ED7000B01440 /* OCAppDelegate.m in Sources */,
+				0EFE4A351656ED7100B01440 /* OCFirstViewController.m in Sources */,
+				0EF099B7165AA94E00F19D8A /* OCPreferencesTableViewController.m in Sources */,
+				0EF099C4165AABFF00F19D8A /* OCCurrenciesTableViewController.m in Sources */,
+				0E97440D165AAD11000C23EB /* OCCurrencyEditViewController.m in Sources */,
+				0E974411165AAD4A000C23EB /* OCOtherPreferencesViewController.m in Sources */,
+				0E974414165AC420000C23EB /* OCPreferencesPasswordViewController.m in Sources */,
+				0E974417165AC481000C23EB /* OCWalletItemsViewController.m in Sources */,
+				0E97441A165AE0E4000C23EB /* OCPayViewController.m in Sources */,
+				0EF001D1169AFC5E00E13A69 /* OCCurrency.m in Sources */,
+				0E065E1316A091580040ADCB /* AFHTTPClient.m in Sources */,
+				0E065E1516A091580040ADCB /* AFHTTPRequestOperation.m in Sources */,
+				0E065E1716A091580040ADCB /* AFImageRequestOperation.m in Sources */,
+				0E065E1916A091580040ADCB /* AFJSONRequestOperation.m in Sources */,
+				0E065E1B16A091580040ADCB /* AFNetworkActivityIndicatorManager.m in Sources */,
+				0E065E1D16A091580040ADCB /* AFPropertyListRequestOperation.m in Sources */,
+				0E065E1F16A091580040ADCB /* AFURLConnectionOperation.m in Sources */,
+				0E065E2116A091580040ADCB /* AFXMLRequestOperation.m in Sources */,
+				0E065E2316A091580040ADCB /* UIImageView+AFNetworking.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0EFE4A411656ED7100B01440 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EF001C2169AE29500E13A69 /* OpenCoinWalletTests.m in Sources */,
+				0EF001D2169AFC5E00E13A69 /* OCCurrency.m in Sources */,
+				0E065E1416A091580040ADCB /* AFHTTPClient.m in Sources */,
+				0E065E1616A091580040ADCB /* AFHTTPRequestOperation.m in Sources */,
+				0E065E1816A091580040ADCB /* AFImageRequestOperation.m in Sources */,
+				0E065E1A16A091580040ADCB /* AFJSONRequestOperation.m in Sources */,
+				0E065E1C16A091580040ADCB /* AFNetworkActivityIndicatorManager.m in Sources */,
+				0E065E1E16A091580040ADCB /* AFPropertyListRequestOperation.m in Sources */,
+				0E065E2016A091580040ADCB /* AFURLConnectionOperation.m in Sources */,
+				0E065E2216A091580040ADCB /* AFXMLRequestOperation.m in Sources */,
+				0E065E2416A091580040ADCB /* UIImageView+AFNetworking.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0EFE4A4C1656ED7100B01440 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0EFE4A101656ED7000B01440 /* OpenCoinWallet */;
+			targetProxy = 0EFE4A4B1656ED7100B01440 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0EF001C8169AE31300E13A69 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0EF001C9169AE31300E13A69 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		0EFE4A1E1656ED7000B01440 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0EFE4A1F1656ED7000B01440 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		0EFE4A2D1656ED7000B01440 /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0EFE4A2E1656ED7000B01440 /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		0EFE4A301656ED7100B01440 /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0EFE4A311656ED7100B01440 /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0EFE4A561656ED7100B01440 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0EFE4A571656ED7100B01440 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0EFE4A591656ED7100B01440 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "src/OpenCoinWallet-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/src/OpenCoinWallet-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		0EFE4A5A1656ED7100B01440 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "src/OpenCoinWallet-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/src/OpenCoinWallet-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		0EFE4A5C1656ED7100B01440 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/OpenCoinWallet.app/OpenCoinWallet";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "src/OpenCoinWallet-Prefix.pch";
+				INFOPLIST_FILE = "test/OpenCoinWalletTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		0EFE4A5D1656ED7100B01440 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/OpenCoinWallet.app/OpenCoinWallet";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "src/OpenCoinWallet-Prefix.pch";
+				INFOPLIST_FILE = "test/OpenCoinWalletTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0EFE4A0B1656ED7000B01440 /* Build configuration list for PBXProject "OpenCoinWallet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0EFE4A561656ED7100B01440 /* Debug */,
+				0EFE4A571656ED7100B01440 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0EFE4A581656ED7100B01440 /* Build configuration list for PBXNativeTarget "OpenCoinWallet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0EFE4A591656ED7100B01440 /* Debug */,
+				0EFE4A5A1656ED7100B01440 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0EFE4A5B1656ED7100B01440 /* Build configuration list for PBXNativeTarget "OpenCoinWalletTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0EFE4A5C1656ED7100B01440 /* Debug */,
+				0EFE4A5D1656ED7100B01440 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0EFE4A081656ED7000B01440 /* Project object */;
+}
