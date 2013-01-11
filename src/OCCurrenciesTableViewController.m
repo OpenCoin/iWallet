@@ -42,7 +42,6 @@ NSDictionary * d;
 {
   NSURL* baseURL = [NSURL URLWithString:@"https://mighty-lake-9219.herokuapp.com/gulden/" ];
   
-  
   AFHTTPClient* client = [AFHTTPClient clientWithBaseURL:baseURL];
   
   [client registerHTTPOperationClass:[AFJSONRequestOperation class]];
@@ -53,7 +52,8 @@ NSDictionary * d;
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"%@", responseObject);
             OCCurrency* c = [[OCCurrency alloc] initWithAttributes: [responseObject valueForKeyPath:@"cdd"]];
-          
+            
+            [self.currencies removeAllObjects];
             [self.currencies addObject:c];
             [self.tableView reloadData];
           }
@@ -116,7 +116,7 @@ NSDictionary * d;
     // Configure the cell...
   OCCurrency* c = (OCCurrency*)[self.currencies objectAtIndex:indexPath.row];
   cell.textLabel.text = [c currency_name];
-  cell.detailTextLabel.text = [[c denominations] description];
+  cell.detailTextLabel.text = [c cdd_location];
 //  [NSString stringWithFormat:@"%@ %d ",
 //                         [self.currencies objectAtIndex:indexPath.row],
 //                         indexPath.row];
