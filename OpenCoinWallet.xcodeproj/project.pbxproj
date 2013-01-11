@@ -199,8 +199,6 @@
 		0EFE4A061656ED7000B01440 = {
 			isa = PBXGroup;
 			children = (
-				0E6B1F3D16A0BBED00659839 /* MobileCoreServices.framework */,
-				0E6B1F3A16A0BBE200659839 /* SystemConfiguration.framework */,
 				0EFE4A1B1656ED7000B01440 /* src */,
 				0EFE4A4D1656ED7100B01440 /* tests */,
 				0EFE4A141656ED7000B01440 /* Frameworks */,
@@ -220,6 +218,8 @@
 		0EFE4A141656ED7000B01440 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0E6B1F3D16A0BBED00659839 /* MobileCoreServices.framework */,
+				0E6B1F3A16A0BBE200659839 /* SystemConfiguration.framework */,
 				0EF001CC169AFA3D00E13A69 /* SenTestingKit.framework */,
 				0EF099B3165AA89200F19D8A /* CoreData.framework */,
 				0EFE4A151656ED7000B01440 /* UIKit.framework */,
