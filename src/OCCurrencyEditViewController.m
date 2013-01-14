@@ -78,10 +78,11 @@ break;
   if (cell == nil)
   {
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-                                   reuseIdentifier:CellIdentifier];
+                                  reuseIdentifier:CellIdentifier];
   }
   
-  switch (indexPath.row) {
+  switch (indexPath.row)
+  {
       FILL_CELL(0, currency_name)
       FILL_CELL(1,additional_info)
       FILL_CELL_DESC(2,cdd_expiry_date)
@@ -104,10 +105,8 @@ break;
     default:
       break;
   }
-  //  cell.textLabel.text = [NSString stringWithFormat:@"%d,%d",indexPath.section,indexPath.row ];
-    // Configure the cell...
-    
-    return cell;
+  
+  return cell;
 }
 
 /*

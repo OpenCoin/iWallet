@@ -10,7 +10,7 @@
 #import "OCCurrencyEditViewController.h"
 #import "OCCurrency.h"
 
-#import "AFHTTPClient.h"
+#import "OCHttpClient.h"
 #import "AFJSONRequestOperation.h"
 
 @interface OCCurrenciesTableViewController ()
@@ -42,27 +42,22 @@ NSDictionary * d;
 {
   NSURL* baseURL = [NSURL URLWithString:@"https://mighty-lake-9219.herokuapp.com/gulden/" ];
   
-  AFHTTPClient* client = [AFHTTPClient clientWithBaseURL:baseURL];
-  
-  [client registerHTTPOperationClass:[AFJSONRequestOperation class]];
-  [client setDefaultHeader:@"Accept" value:@"application/json"];
-  
-  [client getPath:@"cdds/latest"
-       parameters:nil
-          success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSLog(@"%@", responseObject);
-            OCCurrency* c = [[OCCurrency alloc] initWithAttributes: [responseObject valueForKeyPath:@"cdd"]];
-            
-            [self.currencies removeAllObjects];
-            [self.currencies addObject:c];
-            [self.tableView reloadData];
-          }
-   
-          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"error %@", [error localizedDescription]);
-            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:[error localizedDescription] delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
-          }];
-
+  OCHttpClient* client = [[OCHttpClient alloc] initWithBaseURL:baseURL];
+                          [client getLatestCDD:^(OCCurrency *result, NSError *error)
+  {
+    if(!error)
+    {
+      [self.currencies removeAllObjects];
+      [self.currencies addObject:result];
+      [self.tableView reloadData];
+    }
+    else
+    {
+      NSLog(@"error %@", [error localizedDescription]);
+      [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:[error localizedDescription] delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
+    }
+  }
+  ];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -113,13 +108,10 @@ NSDictionary * d;
                                    reuseIdentifier:CellIdentifier];
   }
   
-    // Configure the cell...
+  // Configure the cell...
   OCCurrency* c = (OCCurrency*)[self.currencies objectAtIndex:indexPath.row];
   cell.textLabel.text = [c currency_name];
   cell.detailTextLabel.text = [c cdd_location];
-//  [NSString stringWithFormat:@"%@ %d ",
-//                         [self.currencies objectAtIndex:indexPath.row],
-//                         indexPath.row];
   return cell;
 }
 

@@ -32,6 +32,10 @@
 		0E974414165AC420000C23EB /* OCPreferencesPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E974413165AC420000C23EB /* OCPreferencesPasswordViewController.m */; };
 		0E974417165AC481000C23EB /* OCWalletItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E974416165AC481000C23EB /* OCWalletItemsViewController.m */; };
 		0E97441A165AE0E4000C23EB /* OCPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E974419165AE0E4000C23EB /* OCPayViewController.m */; };
+		0ED296C616A40C9700C43EA5 /* OCHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED296C516A40C9700C43EA5 /* OCHttpClient.m */; };
+		0ED296C716A40C9700C43EA5 /* OCHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED296C516A40C9700C43EA5 /* OCHttpClient.m */; };
+		0ED296CB16A419AD00C43EA5 /* OCMintKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED296CA16A419AD00C43EA5 /* OCMintKey.m */; };
+		0ED296CC16A419AD00C43EA5 /* OCMintKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED296CA16A419AD00C43EA5 /* OCMintKey.m */; };
 		0EF001BF169AE29500E13A69 /* OpenCoinWalletTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0EF001BC169AE29500E13A69 /* OpenCoinWalletTests-Info.plist */; };
 		0EF001C2169AE29500E13A69 /* OpenCoinWalletTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF001BE169AE29500E13A69 /* OpenCoinWalletTests.m */; };
 		0EF001CA169AE31300E13A69 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0EF001C8169AE31300E13A69 /* InfoPlist.strings */; };
@@ -100,6 +104,10 @@
 		0E974416165AC481000C23EB /* OCWalletItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCWalletItemsViewController.m; sourceTree = "<group>"; };
 		0E974418165AE0E4000C23EB /* OCPayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCPayViewController.h; sourceTree = "<group>"; };
 		0E974419165AE0E4000C23EB /* OCPayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCPayViewController.m; sourceTree = "<group>"; };
+		0ED296C416A40C9700C43EA5 /* OCHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCHttpClient.h; sourceTree = "<group>"; };
+		0ED296C516A40C9700C43EA5 /* OCHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCHttpClient.m; sourceTree = "<group>"; };
+		0ED296C916A419AD00C43EA5 /* OCMintKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OCMintKey.h; path = model/OCMintKey.h; sourceTree = "<group>"; };
+		0ED296CA16A419AD00C43EA5 /* OCMintKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OCMintKey.m; path = model/OCMintKey.m; sourceTree = "<group>"; };
 		0EF001BC169AE29500E13A69 /* OpenCoinWalletTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "OpenCoinWalletTests-Info.plist"; path = "test/OpenCoinWalletTests-Info.plist"; sourceTree = SOURCE_ROOT; };
 		0EF001BD169AE29500E13A69 /* OpenCoinWalletTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OpenCoinWalletTests.h; path = test/OpenCoinWalletTests.h; sourceTree = SOURCE_ROOT; };
 		0EF001BE169AE29500E13A69 /* OpenCoinWalletTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OpenCoinWalletTests.m; path = test/OpenCoinWalletTests.m; sourceTree = SOURCE_ROOT; };
@@ -192,6 +200,8 @@
 			children = (
 				0EF001CF169AFC5E00E13A69 /* OCCurrency.h */,
 				0EF001D0169AFC5E00E13A69 /* OCCurrency.m */,
+				0ED296C916A419AD00C43EA5 /* OCMintKey.h */,
+				0ED296CA16A419AD00C43EA5 /* OCMintKey.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -234,6 +244,8 @@
 			children = (
 				0E065DFF16A091580040ADCB /* AFNetworking */,
 				0EF001CE169AFC0200E13A69 /* model */,
+				0ED296C416A40C9700C43EA5 /* OCHttpClient.h */,
+				0ED296C516A40C9700C43EA5 /* OCHttpClient.m */,
 				0E974418165AE0E4000C23EB /* OCPayViewController.h */,
 				0E974419165AE0E4000C23EB /* OCPayViewController.m */,
 				0E974415165AC481000C23EB /* OCWalletItemsViewController.h */,
@@ -426,6 +438,8 @@
 				0E065E1F16A091580040ADCB /* AFURLConnectionOperation.m in Sources */,
 				0E065E2116A091580040ADCB /* AFXMLRequestOperation.m in Sources */,
 				0E065E2316A091580040ADCB /* UIImageView+AFNetworking.m in Sources */,
+				0ED296C616A40C9700C43EA5 /* OCHttpClient.m in Sources */,
+				0ED296CB16A419AD00C43EA5 /* OCMintKey.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +458,8 @@
 				0E065E2016A091580040ADCB /* AFURLConnectionOperation.m in Sources */,
 				0E065E2216A091580040ADCB /* AFXMLRequestOperation.m in Sources */,
 				0E065E2416A091580040ADCB /* UIImageView+AFNetworking.m in Sources */,
+				0ED296C716A40C9700C43EA5 /* OCHttpClient.m in Sources */,
+				0ED296CC16A419AD00C43EA5 /* OCMintKey.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
