@@ -7,6 +7,7 @@
 //
 
 #import "OCCurrencyEditViewController.h"
+#import "OCPublicKey.h"
 
 @interface OCCurrencyEditViewController ()
 @property (retain) OCCurrency* currency;
@@ -86,7 +87,7 @@ break;
       FILL_CELL(0, currency_name)
       FILL_CELL(1,additional_info)
       FILL_CELL_DESC(2,cdd_expiry_date)
-      FILL_CELL(3,cdd_location)
+      FILL_CELL_DESC(3,cdd_location)
       FILL_CELL_INT(4,cdd_serial)
       FILL_CELL_DESC(5,cdd_signing_date)
       FILL_CELL_INT(6,currency_divisor)

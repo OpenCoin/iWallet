@@ -7,8 +7,10 @@
 //
 
 #import "OCMintKey.h"
+#import "OCPublicKey.h"
 
 @implementation OCMintKey
+
 - (id)initWithAttributes:(NSDictionary *)attributes
 {
   self = [super init];
@@ -16,33 +18,16 @@
     return nil;
   }
   
-//  _additional_info  = [attributes valueForKeyPath:@"additional_info"];
-//  _cdd_expiry_date  = [attributes valueForKeyPath:@"cdd_expiry_date"];
-//  
-//  _cdd_location = [attributes valueForKeyPath:@"cdd_location"];
-//  _cdd_serial = [[attributes valueForKeyPath:@"cdd_serial"] integerValue];
-//  // TODO date conversion
-//  // _cdd_signing_date = [attributes valueForKeyPath:@"cdd_signing_date"];
-//  
-//  _currency_divisor = [[attributes valueForKeyPath:@"currency_divisor"] integerValue];
-//  _currency_name = [attributes valueForKeyPath:@"currency_name"];
-//  _denominations =  [attributes valueForKeyPath:@"denominations"];
-//  
-//  // TODO read url list
-//  _info_service = [attributes valueForKeyPath:@"info_service"];
-//  // TODO read url list
-//  _invalidation_service = [attributes valueForKeyPath:@"invalidation_service"];
-//  
-//  _issuer_cipher_suite = [attributes valueForKeyPath:@"issuer_cipher_suite"];
-//  
-//  // TODO implement its subkeys
-//  _issuer_public_master_key = [attributes valueForKeyPath:@"issuer_public_master_key"];
-//  _protocol_version = [attributes valueForKeyPath:@"protocol_version"];
-//  _renewal_service = [attributes valueForKeyPath:@"renewal_service"];
-//  _validation_service = [attributes valueForKeyPath:@"validation_service"];
+  _id                    = [attributes valueForKeyPath:@"id"];
+  _issuer_id             = [attributes valueForKeyPath:@"issuer_id"];
+  _cdd_serial            = [[attributes valueForKeyPath:@"cdd_serial"] integerValue];
+  _public_mint_key       = [[OCPublicKey alloc] initWithAttributes:[attributes valueForKeyPath:@"public_mint_key"]];
+  _denomination          = [[attributes valueForKeyPath:@"denomination"] integerValue];
+  _sign_coins_not_before = [attributes valueForKeyPath:@"sign_coins_not_before"];
+  _sign_coins_not_after  = [attributes valueForKeyPath:@"sign_coins_not_after"];
+  _coins_expiry_date     = [attributes valueForKeyPath:@"coins_expiry_date"];
   
   return self;
-  
 }
 
 @end

@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "OCCurrency.h"
+
+@class OCCurrency;
 
 @interface OCHttpClient : NSObject
 
@@ -24,4 +25,9 @@
 -(void) getMintKeyWithId:(NSInteger)keyID            success:(void (^)(NSArray* result, NSError *error))block;
 -(void) getMintKeysWithDenomination:(NSInteger)serial success:(void (^)(NSArray* result, NSError *error))block;
 
+-(void)   validateBlanks:(NSArray*) blanks
+    WithMessageReference: (NSInteger) messageRef
+withTransactionReference: (NSInteger) transactionRef
+   WithAuthorisationInfo: (NSString*) authInfo
+                 success:(void (^)(NSArray* result, NSError *error))block;
 @end

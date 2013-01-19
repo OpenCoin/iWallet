@@ -11,6 +11,10 @@
 #import "AFHTTPClient.h"
 #import "AFJSONRequestOperation.h"
 
+#import "OCCurrency.h"
+#import "OCMintKey.h"
+#import "OCBlindSignature.h"
+
 @interface OCHttpClient()
 
 @property(readonly) AFHTTPClient* client;
@@ -81,12 +85,17 @@
   [self.client getPath:req
             parameters:nil
                success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                 NSLog(@"%@", responseObject);
-                 
                  if (block)
                  {
-                   //                   OCCurrency* c = [[OCCurrency alloc] initWithAttributes: [responseObject valueForKeyPath:@"cdd"]];
-                   // block(c,nil);
+                   NSMutableArray* keys = [NSMutableArray array];
+                   OCMintKey* k;
+                   for (id item in responseObject)
+                   { 
+                     k = [[OCMintKey alloc] initWithAttributes:[item valueForKeyPath:@"mint_key"]];
+                     // TODO check signature;
+                     [keys addObject:k];
+                   }
+                   block(keys,nil);
                  }
                }
    
@@ -120,6 +129,42 @@
             success:block];
 }
 
+-(void) validateBlanks:(NSArray*) blanks WithMessageReference: (NSInteger) messageRef
+                                     withTransactionReference: (NSInteger) transactionRef
+                                        WithAuthorisationInfo: (NSString*) authInfo
+                                                      success:(void (^)(NSArray* result, NSError *error))block
+{
+  NSMutableDictionary* param = [[NSMutableDictionary alloc] initWithCapacity:5];
+  
+  [param setObject: @"request validation"                       forKey:@"type"];
+  [param setObject: [NSNumber numberWithInteger:messageRef]     forKey:@"message_reference"];
+  [param setObject: [NSNumber numberWithInteger:transactionRef] forKey:@"transaction_reference"];
+  [param setObject: authInfo                                    forKey:@"authorisation_info"];
+  [param setObject: blanks                                      forKey:@"tokens"];
+  
+  [self.client postPath:@"validation"
+             parameters:param
+                success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                  if (block)
+                  {
+                    NSMutableArray* blind_signatures = [NSMutableArray array];
+                    OCBlindSignature* blind;
+                    for (id item in responseObject)
+                    {
+                      blind = [[OCBlindSignature alloc] initWithAttributes:[item valueForKeyPath:@"mint_key"]];
+                      // TODO check signature;
+                      [blind_signatures addObject:blind];
+                    }
+                    block(blind_signatures,nil);
+                  }
+                }
+                failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                  if (block)
+                    block(nil,error);
+                  NSLog(@"error %@",[error localizedDescription]);
+                }
+  ];
+}
 
 
 

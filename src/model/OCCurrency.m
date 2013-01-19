@@ -7,6 +7,7 @@
 //
 
 #import "OCCurrency.h"
+#import "OCPublicKey.h"
 
 @implementation OCCurrency
 
@@ -37,7 +38,7 @@
   _issuer_cipher_suite = [attributes valueForKeyPath:@"issuer_cipher_suite"];
   
   // TODO implement its subkeys
-  _issuer_public_master_key = [attributes valueForKeyPath:@"issuer_public_master_key"];
+  _issuer_public_master_key = [[OCPublicKey alloc] initWithAttributes:[attributes valueForKeyPath:@"issuer_public_master_key"]];
   _protocol_version = [attributes valueForKeyPath:@"protocol_version"];
   _renewal_service = [attributes valueForKeyPath:@"renewal_service"];
   _validation_service = [attributes valueForKeyPath:@"validation_service"];
