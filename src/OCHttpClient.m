@@ -11,6 +11,7 @@
 #import "AFHTTPClient.h"
 #import "AFJSONRequestOperation.h"
 
+#import "OCBlank.h"
 #import "OCCurrency.h"
 #import "OCMintKey.h"
 #import "OCBlindSignature.h"
@@ -35,15 +36,43 @@
   if (self)
   {
     _client = [AFHTTPClient clientWithBaseURL:url];
+    [_client networkReachabilityStatus];
     [_client registerHTTPOperationClass:[AFJSONRequestOperation class]];
     [_client setDefaultHeader:@"Accept" value:@"application/json"];
   }
   return self;
 }
 
+-(void) getCDDSerial: (void (^)(NSNumber* serial, NSError *error))block
+{
+  NSDictionary* param = [NSDictionary dictionaryWithObjectsAndKeys:
+                            [[NSNumber numberWithInt:0] description] , @"message_reference"
+                          , @"request cdd serial"                    , @"type"
+                          , nil];
+  
+  [self.client setParameterEncoding:AFJSONParameterEncoding];
+  [self.client postPath:@"/"
+             parameters:param
+                success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                  if (block)
+                  {
+                    NSNumber *result=nil;
+                    NSLog(@"response : %@",responseObject);
+                    result = [responseObject valueForKey:@"cdd_serial"];
+                    block(result,nil);
+                  }
+                }
+                failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                  if (block)
+                    block(nil,error);
+                  NSLog(@"error %@",[error localizedDescription]);
+                }
+   ];
+  
+}
+
 // common part of cdd requesting
--(void) getCDD:(NSString*) req
-       success:(void (^)(OCCurrency* result, NSError *error))block
+-(void) getCDD:(NSString*) req success:(void (^)(OCCurrency* result, NSError *error))block
 {
   [self.client getPath:req
             parameters:nil
@@ -107,7 +136,6 @@
                  }
                  
                }];
-  
 }
 
 -(void) getMintKeys: (void (^)(NSArray* result, NSError *error))block
@@ -134,15 +162,22 @@
                                         WithAuthorisationInfo: (NSString*) authInfo
                                                       success:(void (^)(NSArray* result, NSError *error))block
 {
+  NSMutableArray* convertedBlanks = [NSMutableArray arrayWithCapacity:[blanks count]];
+  for(OCBlank* blank in blanks)
+  {
+    [convertedBlanks addObject:[blank toDictionary]];
+  }
+  
   NSMutableDictionary* param = [[NSMutableDictionary alloc] initWithCapacity:5];
   
   [param setObject: @"request validation"                       forKey:@"type"];
   [param setObject: [NSNumber numberWithInteger:messageRef]     forKey:@"message_reference"];
   [param setObject: [NSNumber numberWithInteger:transactionRef] forKey:@"transaction_reference"];
   [param setObject: authInfo                                    forKey:@"authorisation_info"];
-  [param setObject: blanks                                      forKey:@"tokens"];
+  [param setObject: convertedBlanks                             forKey:@"tokens"];
   
-  [self.client postPath:@"validation"
+  [self.client setParameterEncoding:AFJSONParameterEncoding];
+  [self.client postPath:@"validation/"
              parameters:param
                 success:^(AFHTTPRequestOperation *operation, id responseObject) {
                   if (block)
@@ -165,7 +200,5 @@
                 }
   ];
 }
-
-
 
 @end

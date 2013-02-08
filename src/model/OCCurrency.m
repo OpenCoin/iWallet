@@ -20,14 +20,15 @@
   
   _additional_info  = [attributes valueForKeyPath:@"additional_info"];
   _cdd_expiry_date  = [attributes valueForKeyPath:@"cdd_expiry_date"];
- 
+  
   _cdd_location = [attributes valueForKeyPath:@"cdd_location"];
   _cdd_serial = [[attributes valueForKeyPath:@"cdd_serial"] integerValue];
   // TODO date conversion
+  _cdd_signing_date = [NSDate date];
   // _cdd_signing_date = [attributes valueForKeyPath:@"cdd_signing_date"];
   
   _currency_divisor = [[attributes valueForKeyPath:@"currency_divisor"] integerValue];
-    _currency_name = [attributes valueForKeyPath:@"currency_name"];
+  _currency_name = [attributes valueForKeyPath:@"currency_name"];
   _denominations =  [attributes valueForKeyPath:@"denominations"];
   
   // TODO read url list
@@ -44,8 +45,7 @@
   _validation_service = [attributes valueForKeyPath:@"validation_service"];
   
   return self;
-
+  
 }
-
 
 @end

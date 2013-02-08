@@ -18,7 +18,9 @@
 
 -(id)initWithBaseURL:(NSURL*) url;
 
--(void) getLatestCDD:                                          (void (^)(OCCurrency* result, NSError *error))block;
+-(void) getCDDSerial: (void (^)(NSNumber* serial, NSError *error))block;
+
+-(void) getLatestCDD: (void (^)(OCCurrency* result, NSError *error))block;
 -(void) getCDDbySerial:(NSInteger)serial              success:(void (^)(OCCurrency* result, NSError *error))block;
 
 -(void) getMintKeys: (void (^)(NSArray* result, NSError *error))block;

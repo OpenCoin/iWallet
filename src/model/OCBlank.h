@@ -13,7 +13,9 @@
 
 @interface OCBlank : NSObject
 
-- (id)initWithAttributes:(NSDictionary *)attributes;
+- (id) initWithAttributes:(NSDictionary *)attributes;
+- (NSDictionary*) toDictionary;
+
 
 +(OCBlank*) blankWithCurrency:(OCCurrency*) currency
              WithDenomination: (NSInteger) denomination

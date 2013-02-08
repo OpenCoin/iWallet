@@ -52,4 +52,29 @@
   return blank;
 }
 
+#define ENTRY(name) [[self name] description], #name
+#define INTEGER_ENTRY(name) [[NSNumber numberWithInt:self.name] description], #name
+
+-(NSDictionary*) toDictionary
+{
+  NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
+                          [self protocol_version] , @"protocol_version"
+                        ,   [self issuer_id] , @"issuer_id"
+                        ,   [self cdd_location] , @"cdd_location"
+                        ,   [NSNumber numberWithInteger:[self denomination] ] , @"denomination"
+                        ,   [self mint_key_id] , @"mint_key_id"
+                        ,   [self serial] , @"serial"
+                        
+  /*, ENTRY(protocol_version)
+                        , ENTRY(issuer_id)
+                        , ENTRY(cdd_location)
+                        , INTEGER_ENTRY(denomination)
+                        , ENTRY(mint_key_id)
+                        , ENTRY(serial)
+                        */
+                        , nil];
+  return dict;
+}
+
+
 @end
