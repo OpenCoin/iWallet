@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="cW4-Ct-9I4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C3012" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="cW4-Ct-9I4">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
         <!--Preferences Navigation Controller-->
@@ -19,7 +19,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JxA-MC-cRj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="689" y="630"/>
+            <point key="canvasLocation" x="85" y="494"/>
         </scene>
         <!--Preferences Table View Controller-->
         <scene sceneID="kSh-41-P74">
@@ -45,7 +45,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kER-cp-Z1M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1106" y="630"/>
+            <point key="canvasLocation" x="502" y="494"/>
         </scene>
         <!--Wallet Table View Controller-->
         <scene sceneID="kJq-RE-MXY">
@@ -72,7 +72,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mbt-5N-iSw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1208" y="-317"/>
+            <point key="canvasLocation" x="604" y="-453"/>
         </scene>
         <!--Wallet Navigation Controller - Item-->
         <scene sceneID="mTi-C6-mRa">
@@ -88,13 +88,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uOD-gl-C1H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="676" y="-317"/>
+            <point key="canvasLocation" x="72" y="-453"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="OxD-Yj-6cg">
             <objects>
                 <viewController modalTransitionStyle="flipHorizontal" id="cW4-Ct-9I4" userLabel="Login View Controller" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="bWh-C5-Rc8">
+                    <view key="view" contentMode="scaleAspectFit" id="bWh-C5-Rc8">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -120,11 +120,18 @@
                                     <segue destination="4" kind="modal" id="fRT-tL-lJ9"/>
                                 </connections>
                             </button>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="AppIcon144x144.png" translatesAutoresizingMaskIntoConstraints="NO" id="AWb-GU-lQ8">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="86" id="oA9-Iq-05B"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="AWb-GU-lQ8" secondAttribute="bottom" constant="45" id="0gu-Wn-vXr"/>
                             <constraint firstItem="TNR-F3-1Bm" firstAttribute="leading" secondItem="bWh-C5-Rc8" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="5KC-ht-pjM"/>
                             <constraint firstAttribute="trailing" secondItem="TNR-F3-1Bm" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="B1i-Iw-hWG"/>
+                            <constraint firstItem="AWb-GU-lQ8" firstAttribute="centerX" secondItem="g1z-WK-RFC" secondAttribute="centerX" type="default" id="K21-VE-imY"/>
                             <constraint firstItem="61Q-HO-EP3" firstAttribute="leading" secondItem="bWh-C5-Rc8" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="KvI-3X-xHE"/>
                             <constraint firstItem="61Q-HO-EP3" firstAttribute="centerY" secondItem="bWh-C5-Rc8" secondAttribute="centerY" type="default" id="R8f-xK-rdZ"/>
                             <constraint firstItem="g1z-WK-RFC" firstAttribute="top" secondItem="61Q-HO-EP3" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Tku-JN-3ow"/>
@@ -137,7 +144,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c9e-Oc-WuT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-343" y="180"/>
+            <point key="canvasLocation" x="-1181" y="74"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="15">
@@ -156,9 +163,12 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="144" y="196"/>
+            <point key="canvasLocation" x="-635" y="42"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="AppIcon144x144.png" width="144" height="144"/>
+    </resources>
     <classes>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
