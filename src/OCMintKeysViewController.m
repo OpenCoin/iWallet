@@ -1,55 +1,47 @@
 //
-//  OCWalletItemsViewController.m
+//  OCMintKeysViewController.m
 //  OpenCoinWallet
 //
 //  Created by Gulliver on 19.11.12.
 //  Copyright (c) 2012 Opencoin Team. All rights reserved.
 //
 
-#import "OCWalletItemsViewController.h"
-#import "OCPayViewController.h"
 #import "OCMintKeysViewController.h"
 
-@interface OCWalletItemsViewController ()
-@property(strong) NSDictionary* buttons;
-@property(strong) NSDictionary* section2;
+#import "OCBlank.h"
+#import "OCMintKey.h"
+#import "OCHttpClient.h"
+
+@interface OCMintKeysViewController ()
+@property(readonly) NSMutableArray* items;
 @end
 
-@implementation OCWalletItemsViewController
+@implementation OCMintKeysViewController
+
+- (id)initWithStyle:(UITableViewStyle)style
+{
+    self = [super initWithStyle:style];
+    if (self) {
+        // Custom initialization
+      _items = [NSMutableArray array];
+    }
+    return self;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+  [super viewWillAppear:animated];
+  NSURL* baseURL = [NSURL URLWithString:@"https://mighty-lake-9219.herokuapp.com/gulden/" ];
+  
+  OCHttpClient* client = [[OCHttpClient alloc] initWithBaseURL:baseURL];
+  
+  
+}
 
 - (void)viewDidLoad
 {
-  [super viewDidLoad];
+    [super viewDidLoad];
 
-  self.buttons = [NSDictionary
-                  dictionaryWithObjects:
-                  [NSArray arrayWithObjects:
-                   [OCPayViewController class],
-                   [OCPayViewController class],
-                   [OCPayViewController class],
-                   [OCPayViewController class],
-                   [OCPayViewController class],
-                   nil
-                   ]
-                  forKeys:[NSArray arrayWithObjects:
-                           NSLocalizedString(@"Pay"        ,nil),
-                           NSLocalizedString(@"Receive"    ,nil),
-                           NSLocalizedString(@"Get change" ,nil),
-                           NSLocalizedString(@"Withdraw"   ,nil),
-                           NSLocalizedString(@"Redeem"     ,nil),
-                           nil]
-                  ];
-
-  self.section2 = [NSDictionary
-                  dictionaryWithObjects:
-                  [NSArray arrayWithObjects:
-                   [ OCMintKeysViewController class],
-                     nil
-                   ]
-                  forKeys:[NSArray arrayWithObjects:
-                           NSLocalizedString(@"Mintkeys"        ,nil),
-                           nil]
-                  ];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -67,46 +59,25 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 2;
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+#warning Incomplete method implementation.
     // Return the number of rows in the section.
-  switch(section)
-  {
-    case 0:
-      return self.buttons.count;
-
-    default:
-      return 1;
-  }
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil)
-    {
-      cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-                                   reuseIdentifier:CellIdentifier];
-    }
-
-  
-  
-  // Configure the cell...
-  switch(indexPath.section)
-    {
-      case 0:
-        cell.textLabel.text = [[self.buttons allKeys] objectAtIndex:indexPath.row];
-        break;
-        
-      default:
-        break;
-    }
-  
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    // Configure the cell...
+    
     return cell;
 }
 
@@ -153,21 +124,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  Class c = [[self.buttons allValues] objectAtIndex:indexPath.row];
-  
-  UIViewController *detailViewController =[[c alloc] init];
-  
-  switch(indexPath.section)
-  {
-    case 0:
-      
-      break;
-    default:
-      detailViewController = nil;
-  }
-  
-  // Pass the selected object to the new view controller.
+    // Navigation logic may go here. Create and push another view controller.
+    /*
+     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+     // ...
+     // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
+     [detailViewController release];
+     */
 }
 
 @end
