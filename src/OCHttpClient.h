@@ -24,12 +24,21 @@
 -(void) getCDDbySerial:(NSInteger)serial              success:(void (^)(OCCurrency* result, NSError *error))block;
 
 -(void) getMintKeys: (void (^)(NSArray* result, NSError *error))block;
--(void) getMintKeyWithId:(NSInteger)keyID            success:(void (^)(NSArray* result, NSError *error))block;
--(void) getMintKeysWithDenomination:(NSInteger)serial success:(void (^)(NSArray* result, NSError *error))block;
+-(void) getMintKeysByGet: (void (^)(NSArray* result, NSError *error))block;
+-(void) getMintKeyWithIdByGet:(NSInteger)keyID            success:(void (^)(NSArray* result, NSError *error))block;
+-(void) getMintKeysWithDenominationByGet:(NSInteger)serial success:(void (^)(NSArray* result, NSError *error))block;
 
 -(void)   validateBlanks:(NSArray*) blanks
     WithMessageReference: (NSInteger) messageRef
 withTransactionReference: (NSInteger) transactionRef
    WithAuthorisationInfo: (NSString*) authInfo
                  success:(void (^)(NSArray* result, NSError *error))block;
+
+-(void)            renewalCoins: (NSArray*) coins
+           withBlinds: (NSArray*) blinds
+           withMessageReference: (NSInteger) messageRef
+       withTransactionReference: (NSInteger) transactionRef
+          withAuthorisationInfo: (NSString*) authInfo
+                        success:(void (^)(NSArray* result, NSError *error))block;
+
 @end

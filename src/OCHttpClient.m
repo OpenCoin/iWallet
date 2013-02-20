@@ -108,53 +108,41 @@
        success:block];
 }
 
--(void) getMintKeys:(NSString*) req
-            success:(void (^)(NSArray* result, NSError *error))block
-{
-  [self.client getPath:req
-            parameters:nil
-               success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                 if (block)
-                 {
-                   NSMutableArray* keys = [NSMutableArray array];
-                   OCMintKey* k;
-                   for (id item in responseObject)
-                   { 
-                     k = [[OCMintKey alloc] initWithAttributes:[item valueForKeyPath:@"mint_key"]];
-                     // TODO check signature;
-                     [keys addObject:k];
-                   }
-                   block(keys,nil);
-                 }
-               }
-   
-               failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                 NSLog(@"error %@", [error localizedDescription]);
-                 if (block)
-                 {
-                   block(nil,error);
-                 }
-                 
-               }];
-}
-
 -(void) getMintKeys: (void (^)(NSArray* result, NSError *error))block
 {
-  [self getMintKeys:@"mintkeys/" success:block];
-}
-
--(void) getMintKeyWithId:(NSInteger)keyId
-                 success:(void (^)(NSArray* result, NSError *error))block
-{
-  [self getMintKeys:[NSString stringWithFormat:@"mintkeys/id/%d",keyId]
-            success:block];
-}
-
--(void) getMintKeysWithDenomination:(NSInteger)denomination
-                            success:(void (^)(NSArray* result, NSError *error))block
-{
-  [self getMintKeys:[NSString stringWithFormat:@"mintkeys/denomination/%d",denomination]
-            success:block];
+  NSDictionary* param = [NSDictionary dictionaryWithObjectsAndKeys:
+                           @"request mint keys"                     , @"type"
+                         , [[NSNumber numberWithInt:0] description] , @"message_reference"
+                         , nil];
+  
+  [self.client setParameterEncoding:AFJSONParameterEncoding];
+  [self.client postPath:@"/"
+             parameters:param
+                success:^(AFHTTPRequestOperation *operation, id responseObject)
+                {
+                    if (block)
+                    {
+                      NSMutableArray* keys = [NSMutableArray array];
+                      OCMintKey* k;
+                      NSLog(@"%@",responseObject);
+                      for (id item in [responseObject valueForKey:@"keys"])
+                      {
+                        k = [[OCMintKey alloc] initWithAttributes:[item valueForKeyPath:@"mint_key"]];
+                        // TODO check signature;
+                        [keys addObject:k];
+                      }
+                      block(keys,nil);
+                    }
+                }
+   
+                failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                  NSLog(@"error %@", [error localizedDescription]);
+                  if (block)
+                  {
+                    block(nil,error);
+                  }
+                }
+   ];
 }
 
 -(void) validateBlanks:(NSArray*) blanks WithMessageReference: (NSInteger) messageRef
@@ -177,14 +165,15 @@
   [param setObject: convertedBlanks                             forKey:@"tokens"];
   
   [self.client setParameterEncoding:AFJSONParameterEncoding];
-  [self.client postPath:@"validation/"
+  [self.client postPath:@"/"
              parameters:param
                 success:^(AFHTTPRequestOperation *operation, id responseObject) {
                   if (block)
                   {
+                    NSLog(@"%@",responseObject);
                     NSMutableArray* blind_signatures = [NSMutableArray array];
                     OCBlindSignature* blind;
-                    for (id item in responseObject)
+                    for (id item in [responseObject valueForKeyPath:@"blind_signatures"])
                     {
                       blind = [[OCBlindSignature alloc] initWithAttributes:[item valueForKeyPath:@"mint_key"]];
                       // TODO check signature;
@@ -200,5 +189,101 @@
                 }
   ];
 }
+
+-(void)            renewalCoins: (NSArray*) coins
+           withMessageReference: (NSInteger) messageRef
+       withTransactionReference: (NSInteger) transactionRef
+          withAuthorisationInfo: (NSString*) authInfo
+                        success:(void (^)(NSArray* result, NSError *error))block
+{
+  NSMutableArray* convertedCoins = [NSMutableArray arrayWithCapacity:[coins count]];
+  for(OCBlank* coin in coins)
+  {
+    [convertedCoins addObject:[coin toDictionary]];
+  }
+  
+  NSMutableDictionary* param = [[NSMutableDictionary alloc] initWithCapacity:5];
+  
+  [param setObject: @"request validation"                       forKey:@"type"];
+  [param setObject: [NSNumber numberWithInteger:messageRef]     forKey:@"message_reference"];
+  [param setObject: [NSNumber numberWithInteger:transactionRef] forKey:@"transaction_reference"];
+  [param setObject: authInfo                                    forKey:@"authorisation_info"];
+  [param setObject: convertedCoins                              forKey:@"tokens"];
+  
+  [self.client setParameterEncoding:AFJSONParameterEncoding];
+  [self.client postPath:@"/"
+             parameters:param
+                success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                  if (block)
+                  {
+                    NSLog(@"%@",responseObject);
+                    NSMutableArray* blind_signatures = [NSMutableArray array];
+                    OCBlindSignature* blind;
+                    for (id item in [responseObject valueForKeyPath:@"blind_signatures"])
+                    {
+                      blind = [[OCBlindSignature alloc] initWithAttributes:[item valueForKeyPath:@"mint_key"]];
+                      // TODO check signature;
+                      [blind_signatures addObject:blind];
+                    }
+                    block(blind_signatures,nil);
+                  }
+                }
+                failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                  if (block)
+                    block(nil,error);
+                  NSLog(@"error %@",[error localizedDescription]);
+                }
+   ];
+}
+  
+-(void) getMintKeysByGet:(NSString*) req
+                 success:(void (^)(NSArray* result, NSError *error))block
+{
+  [self.client getPath:req
+            parameters:nil
+               success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                 if (block)
+                 {
+                   NSMutableArray* keys = [NSMutableArray array];
+                   OCMintKey* k;
+                   for (id item in responseObject)
+                   {
+                     k = [[OCMintKey alloc] initWithAttributes:[item valueForKeyPath:@"mint_key"]];
+                     // TODO check signature;
+                     [keys addObject:k];
+                   }
+                   block(keys,nil);
+                 }
+               }
+   
+               failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                 NSLog(@"error %@", [error localizedDescription]);
+                 if (block)
+                 {
+                   block(nil,error);
+                 }
+                 
+               }];
+}
+
+-(void) getMintKeysByGet: (void (^)(NSArray* result, NSError *error))block
+{
+  [self getMintKeysByGet:@"mintkeys/" success:block];
+}
+
+-(void) getMintKeyWithIdByGet:(NSInteger)keyId
+                      success:(void (^)(NSArray* result, NSError *error))block
+{
+  [self getMintKeysByGet:[NSString stringWithFormat:@"mintkeys/id/%d",keyId]
+                 success:block];
+}
+
+-(void) getMintKeysWithDenominationByGet:(NSInteger)denomination
+                                 success:(void (^)(NSArray* result, NSError *error))block
+{
+  [self getMintKeysByGet:[NSString stringWithFormat:@"mintkeys/denomination/%d",denomination]
+                 success:block];
+}
+
 
 @end

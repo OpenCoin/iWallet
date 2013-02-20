@@ -8,8 +8,44 @@
 
 #import "OCCurrency.h"
 #import "OCPublicKey.h"
+#import "OCHttpClient.h"
+
+@interface OCCurrency ()
+
+@end
+
 
 @implementation OCCurrency
+
+NSMutableArray* registeredCurrencies = nil;
+
++ (NSArray*) currencies
+{
+  if (!registeredCurrencies)
+  {
+    registeredCurrencies = [[NSMutableArray alloc] initWithCapacity:3];
+  }
+  return registeredCurrencies;
+}
+
++ (void) registerCurrency: (NSURL*) issuerURL withCompletition:(void (^)(OCCurrency* result, NSError *error)) block
+{
+  OCHttpClient* client = [[OCHttpClient alloc] initWithBaseURL:issuerURL];
+  
+  [client getLatestCDD:^(OCCurrency *result, NSError *error) {
+    if (!error)
+    {
+      [OCCurrency currencies];
+      [registeredCurrencies addObject:result];
+    }
+    
+    if (block)
+    {
+      block(result,error);
+    }
+  }];
+}
+
 
 - (id)initWithAttributes:(NSDictionary *)attributes
 {

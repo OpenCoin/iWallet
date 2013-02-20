@@ -60,7 +60,7 @@
   GHAssertNotNil(serial, @"no result returned: %@",serial);
 }
 
--(void) testGetCddSerialFromJan
+-(void) xtestGetCddSerialFromJan
 {
   [self prepare];
   
@@ -134,7 +134,7 @@
   static NSError *error;
   
     // test existing url
-  OCHttpClient* client = [OCHttpClient clientWithBaseURL:self.VALID_URL];
+  OCHttpClient* client = [OCHttpClient clientWithBaseURL:self.LOCAL_URL];
   [client getMintKeys:^(NSArray *_result, NSError *_error) {
     result = _result;
     error = _error;
@@ -143,10 +143,10 @@
   
   [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
   
-  GHAssertNotNil(result, @"no mint keys returned: %@",result);
-  GHAssertNotEquals([result count], 0 , @"no mint keys returned - array empty:");
+  GHAssertNotNil(result             , @"no mint keys returned: %@",result);
+  GHAssertTrue ([result count] > 0 , @"no mint keys returned - array empty:");
   
-  GHAssertNil(error, @"no error awaited but got: %@",[error localizedDescription]);
+  GHAssertNil   (error              , @"no error awaited but got: %@",[error localizedDescription]);
 }
 
 -(void) testLoadMintKeysFromNonvalidURL
@@ -170,7 +170,7 @@
   GHAssertNotNil(error, @"error: %@",[error localizedDescription]);
 }
 
--(void) testValidateMintKeys
+-(void) testValidateTokens
 {
   [self prepare];
 
@@ -195,7 +195,7 @@
   static NSError *error;
 
   // test existing url
-  OCHttpClient* client = [OCHttpClient clientWithBaseURL:self.VALID_URL];
+  OCHttpClient* client = [OCHttpClient clientWithBaseURL:self.LOCAL_URL];
   [client validateBlanks:blanks
     WithMessageReference:23
 withTransactionReference:42
@@ -209,26 +209,50 @@ withTransactionReference:42
   
   GHAssertNotNil(result, @"no result returned: %@",result);
   GHAssertNil(error, @"no error awaited but got: %@",[error localizedDescription]);
-  
-  
-  // not existent url
+}
+
+-(void) test_request_renewal {
   [self prepare];
   
-  client = [OCHttpClient clientWithBaseURL:self.INVALID_URL];
-  [client validateBlanks:blanks
-    WithMessageReference:23
-withTransactionReference:42
-   WithAuthorisationInfo:@"opencoin"
-                 success:^(NSArray *_result, NSError *_error) {
+  //  OCCurrency* cdd = [[OCCurrency alloc] initWithAttributes:nil];
+  
+  NSArray* coins = [NSArray arrayWithObjects: [[OCBlank alloc] initWithAttributes:nil],
+                     [[OCBlank alloc] initWithAttributes:nil],
+                     [[OCBlank alloc] initWithAttributes:nil],
+                     nil];
+  
+  /*
+   NSArray* blanks = [NSArray arrayWithObjects: [OCBlank blankWithCurrency:cdd
+   WithDenomination:1
+   WithMintKey:nil],
+   [OCBlank blankWithCurrency:cdd
+   WithDenomination:1
+   WithMintKey:nil],
+   
+   nil];
+   */
+  static NSArray *result;
+  static NSError *error;
+  
+  // test existing url
+  OCHttpClient* client = [OCHttpClient clientWithBaseURL:self.LOCAL_URL];
+  [client        renewalCoins:coins
+                   withBlinds: nil
+         withMessageReference:23
+    withTransactionReference:42
+       withAuthorisationInfo:@"opencoin"
+                                            success:^(NSArray *_result, NSError *_error)
+                 {
                    result = _result;
                    error = _error;
                    [self notify:kGHUnitWaitStatusSuccess ];
                  }];
-  
   [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
-  GHAssertNotNil(result, @"no mint keys returned: %@",result);
+  
+  GHAssertNotNil(result, @"no result returned: %@",result);
   GHAssertNil(error, @"no error awaited but got: %@",[error localizedDescription]);
 }
+
 
 
 @end
