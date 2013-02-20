@@ -17,6 +17,7 @@
 		0E065E1F16A091580040ADCB /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E065E0E16A091580040ADCB /* AFURLConnectionOperation.m */; };
 		0E065E2116A091580040ADCB /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E065E1016A091580040ADCB /* AFXMLRequestOperation.m */; };
 		0E065E2316A091580040ADCB /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E065E1216A091580040ADCB /* UIImageView+AFNetworking.m */; };
+		0E49AE1616D224350072B5CE /* OCMintKeysViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E49AE1516D224350072B5CE /* OCMintKeysViewController.m */; };
 		0E6B1F3B16A0BBE200659839 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E6B1F3A16A0BBE200659839 /* SystemConfiguration.framework */; };
 		0E6B1F3E16A0BBED00659839 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E6B1F3D16A0BBED00659839 /* MobileCoreServices.framework */; };
 		0E97440D165AAD11000C23EB /* OCCurrencyEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E97440C165AAD11000C23EB /* OCCurrencyEditViewController.m */; };
@@ -75,7 +76,6 @@
 		0EFE4A2C1656ED7000B01440 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EFE4A2B1656ED7000B01440 /* Default-568h@2x.png */; };
 		0EFE4A2F1656ED7000B01440 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EFE4A2D1656ED7000B01440 /* MainStoryboard_iPhone.storyboard */; };
 		0EFE4A321656ED7100B01440 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EFE4A301656ED7100B01440 /* MainStoryboard_iPad.storyboard */; };
-		0EFE4A351656ED7100B01440 /* OCFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFE4A341656ED7100B01440 /* OCFirstViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +100,10 @@
 		0E065E1016A091580040ADCB /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		0E065E1116A091580040ADCB /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		0E065E1216A091580040ADCB /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		0E49AE1516D224350072B5CE /* OCMintKeysViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCMintKeysViewController.m; sourceTree = "<group>"; };
+		0E49AE1716D224620072B5CE /* OCMintKeysViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMintKeysViewController.h; sourceTree = "<group>"; };
+		0E49AE4516D23DE90072B5CE /* FAQ.md */ = {isa = PBXFileReference; lastKnownFileType = text; name = FAQ.md; path = "../opencoin-memoranda/FAQ.md"; sourceTree = "<group>"; };
+		0E49AE4616D23DE90072B5CE /* opencoin-v3.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = "opencoin-v3.txt"; path = "../opencoin-memoranda/opencoin-v3.txt"; sourceTree = "<group>"; };
 		0E6B1F3A16A0BBE200659839 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0E6B1F3D16A0BBED00659839 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		0E97440B165AAD11000C23EB /* OCCurrencyEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCCurrencyEditViewController.h; sourceTree = "<group>"; };
@@ -158,8 +162,6 @@
 		0EFE4A2B1656ED7000B01440 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		0EFE4A2E1656ED7000B01440 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		0EFE4A311656ED7100B01440 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		0EFE4A331656ED7100B01440 /* OCFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCFirstViewController.h; sourceTree = "<group>"; };
-		0EFE4A341656ED7100B01440 /* OCFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCFirstViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -262,6 +264,8 @@
 		0EFE4A061656ED7000B01440 = {
 			isa = PBXGroup;
 			children = (
+				0E49AE4516D23DE90072B5CE /* FAQ.md */,
+				0E49AE4616D23DE90072B5CE /* opencoin-v3.txt */,
 				0EFE4A1B1656ED7000B01440 /* src */,
 				0ED4D20116C41A9900BD9E21 /* UnitTests */,
 				0EFE4A141656ED7000B01440 /* Frameworks */,
@@ -302,6 +306,8 @@
 				0ED296C516A40C9700C43EA5 /* OCHttpClient.m */,
 				0E974418165AE0E4000C23EB /* OCPayViewController.h */,
 				0E974419165AE0E4000C23EB /* OCPayViewController.m */,
+				0E49AE1716D224620072B5CE /* OCMintKeysViewController.h */,
+				0E49AE1516D224350072B5CE /* OCMintKeysViewController.m */,
 				0E974415165AC481000C23EB /* OCWalletItemsViewController.h */,
 				0E974416165AC481000C23EB /* OCWalletItemsViewController.m */,
 				0E97440F165AAD4A000C23EB /* OCOtherPreferencesViewController.h */,
@@ -318,8 +324,6 @@
 				0EFE4A251656ED7000B01440 /* OCAppDelegate.m */,
 				0EFE4A2D1656ED7000B01440 /* MainStoryboard_iPhone.storyboard */,
 				0EFE4A301656ED7100B01440 /* MainStoryboard_iPad.storyboard */,
-				0EFE4A331656ED7100B01440 /* OCFirstViewController.h */,
-				0EFE4A341656ED7100B01440 /* OCFirstViewController.m */,
 				0EFE4A1C1656ED7000B01440 /* Supporting Files */,
 			);
 			path = src;
@@ -472,7 +476,6 @@
 			files = (
 				0EFE4A221656ED7000B01440 /* main.m in Sources */,
 				0EFE4A261656ED7000B01440 /* OCAppDelegate.m in Sources */,
-				0EFE4A351656ED7100B01440 /* OCFirstViewController.m in Sources */,
 				0EF099B7165AA94E00F19D8A /* OCPreferencesTableViewController.m in Sources */,
 				0EF099C4165AABFF00F19D8A /* OCCurrenciesTableViewController.m in Sources */,
 				0E97440D165AAD11000C23EB /* OCCurrencyEditViewController.m in Sources */,
@@ -495,6 +498,7 @@
 				0ED296CF16A5FFD700C43EA5 /* OCPublicKey.m in Sources */,
 				0ED296D316A6052000C43EA5 /* OCBlank.m in Sources */,
 				0E04DB4216A882F9000DCA4F /* OCBlindSignature.m in Sources */,
+				0E49AE1616D224350072B5CE /* OCMintKeysViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

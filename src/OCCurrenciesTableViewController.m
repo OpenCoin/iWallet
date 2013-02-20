@@ -43,7 +43,8 @@ NSDictionary * d;
   NSURL* baseURL = [NSURL URLWithString:@"https://mighty-lake-9219.herokuapp.com/gulden/" ];
   
   OCHttpClient* client = [[OCHttpClient alloc] initWithBaseURL:baseURL];
-                          [client getLatestCDD:^(OCCurrency *result, NSError *error)
+  
+  [client getLatestCDD:^(OCCurrency *result, NSError *error)
   {
     if(!error)
     {
@@ -58,6 +59,21 @@ NSDictionary * d;
     }
   }
   ];
+//  
+//  [client getMintKeys:^(NSArray *result, NSError *error) 
+//   {
+//     if(!error)
+//     {
+//       NSLog(@"%@",result);
+//     }
+//     else
+//     {
+//       NSLog(@"error %@", [error localizedDescription]);
+//       [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:[error localizedDescription] delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
+//     }
+//   }
+//   ];
+  
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -111,7 +127,7 @@ NSDictionary * d;
   // Configure the cell...
   OCCurrency* c = (OCCurrency*)[self.currencies objectAtIndex:indexPath.row];
   cell.textLabel.text = [c currency_name];
-  cell.detailTextLabel.text = [c cdd_location];
+  cell.detailTextLabel.text = [[c cdd_location] description];
   return cell;
 }
 

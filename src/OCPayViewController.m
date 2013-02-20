@@ -8,8 +8,12 @@
 
 #import "OCPayViewController.h"
 
-@interface OCPayViewController ()
+#import "OCBlank.h"
+#import "OCMintKey.h"
+#import "OCHttpClient.h"
 
+@interface OCPayViewController ()
+@property(readonly) NSMutableArray* items;
 @end
 
 @implementation OCPayViewController
@@ -19,8 +23,60 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+      _items = [NSMutableArray array];
     }
     return self;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+  [super viewWillAppear:animated];
+  NSURL* baseURL = [NSURL URLWithString:@"https://mighty-lake-9219.herokuapp.com/gulden/" ];
+  
+  OCHttpClient* client = [[OCHttpClient alloc] initWithBaseURL:baseURL];
+  
+  __block OCCurrency* currency;
+  __block NSError* error;
+  [client getLatestCDD:^(OCCurrency *result, NSError *_error) {
+    currency = result;
+    error = _error;
+    
+    if (!error)
+    {
+      __block OCMintKey* mint_key = [[OCMintKey alloc] init];
+      
+      __block NSArray* blanks = [NSArray arrayWithObjects:
+                         [OCBlank blankWithCurrency:currency
+                                   WithDenomination:1
+                                        WithMintKey:mint_key]
+                         , nil];
+      
+      __block NSArray* blinded_token;
+      
+      [client validateBlanks:blanks
+        WithMessageReference:42
+    withTransactionReference:42
+       WithAuthorisationInfo:@"opencoin"
+                     success:^(NSArray *result, NSError *_error) {
+                       blinded_token = result;
+                       error = _error;
+      if (!error)
+      {
+        [self.items removeAllObjects];
+        [self.items addObjectsFromArray:blinded_token];
+        [self.tableView reloadData];
+      }
+      else
+      {
+        {
+          NSLog(@"error %@", [error localizedDescription]);
+          [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:[error localizedDescription] delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
+        }
+      }
+      }];
+    }
+  }];
+  
 }
 
 - (void)viewDidLoad
