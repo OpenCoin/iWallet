@@ -60,28 +60,73 @@
   GHAssertNotNil(serial, @"no result returned: %@",serial);
 }
 
--(void) xtestGetCddSerialFromJan
+-(void) testGetCurrencyWithValidSerial
 {
   [self prepare];
   
-  static NSNumber *serial;
+  static OCCurrency *result;
   static NSError *error;
   
-  OCHttpClient* client = [OCHttpClient clientWithBaseURL:self.VALID_URL];
-  [client getCDDSerial: ^(NSNumber *_serial, NSError *_error) {
-    
-    serial = _serial;
-    error = _error;
-    
-    [self notify:kGHUnitWaitStatusSuccess];
-  }];
+  // test existing cdd
+  OCHttpClient* client = [OCHttpClient clientWithBaseURL:self.LOCAL_URL];
+  [client getCDD: [NSNumber numberWithInt:1]
+         success: ^(OCCurrency *_result, NSError *_error) {
+           result = _result;
+           error = _error;
+           [self notify:kGHUnitWaitStatusSuccess ];
+         }
+   ];
   
   [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
   
-  GHAssertNil( error,  @"no error awaited but got: %@",[error localizedDescription]);
-  GHAssertNotNil(serial, @"no result returned: %@",serial);
+  GHAssertNotNil(result, @"no currencies returned: %@",result);
+  GHAssertNil(error, @"no error awaited but got: %@",[error localizedDescription]);
 }
 
+-(void) testGetCurrencyWithInvalidSerial
+{
+  [self prepare];
+  
+  static OCCurrency *result;
+  static NSError *error;
+  
+  // test existing cdd
+  OCHttpClient* client = [OCHttpClient clientWithBaseURL:self.LOCAL_URL];
+  [client getCDD: [NSNumber numberWithInt:2]
+         success: ^(OCCurrency *_result, NSError *_error) {
+           result = _result;
+           error = _error;
+           [self notify:kGHUnitWaitStatusSuccess ];
+         }
+   ];
+  
+  [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
+  
+  GHAssertNotNil(result, @"no currencies returned: %@",result);
+  GHAssertNil(error, @"no error awaited but got: %@",[error localizedDescription]);
+}
+
+-(void) testGetLatestCDD
+{
+  [self prepare];
+  
+  static OCCurrency *result;
+  static NSError *error;
+  
+  // test existing cdd
+  OCHttpClient* client = [OCHttpClient clientWithBaseURL:self.LOCAL_URL];
+  [client getLatestCDD: ^(OCCurrency *_result, NSError *_error) {
+           result = _result;
+           error = _error;
+           [self notify:kGHUnitWaitStatusSuccess ];
+         }
+   ];
+  
+  [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
+  
+  GHAssertNotNil(result, @"no currencies returned: %@",result);
+  GHAssertNil(error, @"no error awaited but got: %@",[error localizedDescription]);
+}
 
 -(void) testGetCurrencyByGetRequest
 {
@@ -92,7 +137,7 @@
     
   // test existing cdd
   OCHttpClient* client = [OCHttpClient clientWithBaseURL:self.VALID_URL];
-  [client getLatestCDD:^(OCCurrency *_result, NSError *_error) {
+  [client getLatestCDDByGet:^(OCCurrency *_result, NSError *_error) {
     result = _result;
     error = _error;
     [self notify:kGHUnitWaitStatusSuccess ];
@@ -105,7 +150,7 @@
   GHAssertNil(error, @"no error awaited but got: %@",[error localizedDescription]);
 }
 
--(void) testGetCurrencyFromInValidURL
+-(void) testGetCurrencyFromInvalidURL
 {
   [self prepare];
   
@@ -122,7 +167,7 @@
   
   [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
   
-  GHAssertNil(result, @"shoudn't return data on error : %@",result);
+  GHAssertNil(result, @"shouldn't return data on error : %@",result);
   GHAssertNotNil(error, @"error: %@",[error localizedDescription]);
 }
 
@@ -164,7 +209,7 @@
     [self notify:kGHUnitWaitStatusSuccess ];
   }];
   
-  [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
+  [self waitForTimeout:10.0];
   
   GHAssertNil(result, @"shouldn't return data on error : %@",result);
   GHAssertNotNil(error, @"error: %@",[error localizedDescription]);
@@ -237,19 +282,19 @@ withTransactionReference:42
   // test existing url
   OCHttpClient* client = [OCHttpClient clientWithBaseURL:self.LOCAL_URL];
   [client        renewalCoins:coins
-                   withBlinds: nil
          withMessageReference:23
     withTransactionReference:42
        withAuthorisationInfo:@"opencoin"
-                                            success:^(NSArray *_result, NSError *_error)
+                                            success:^(NSArray *_blinds, NSError *_error)
                  {
-                   result = _result;
+                   result = _blinds;
                    error = _error;
                    [self notify:kGHUnitWaitStatusSuccess ];
                  }];
   [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
   
   GHAssertNotNil(result, @"no result returned: %@",result);
+  GHAssertEquals([coins count], [result count], @"coins and blinds should have the same count");
   GHAssertNil(error, @"no error awaited but got: %@",[error localizedDescription]);
 }
 
