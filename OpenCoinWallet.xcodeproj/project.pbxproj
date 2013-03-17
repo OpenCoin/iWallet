@@ -18,6 +18,10 @@
 		0E065E2116A091580040ADCB /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E065E1016A091580040ADCB /* AFXMLRequestOperation.m */; };
 		0E065E2316A091580040ADCB /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E065E1216A091580040ADCB /* UIImageView+AFNetworking.m */; };
 		0E49AE1616D224350072B5CE /* OCMintKeysViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E49AE1516D224350072B5CE /* OCMintKeysViewController.m */; };
+		0E53CC7D16ECA740007ADB7C /* base64.c in Sources */ = {isa = PBXBuildFile; fileRef = 0E53CC7B16ECA740007ADB7C /* base64.c */; };
+		0E53CC7E16ECA740007ADB7C /* base64.c in Sources */ = {isa = PBXBuildFile; fileRef = 0E53CC7B16ECA740007ADB7C /* base64.c */; };
+		0E53CC8116ECAA21007ADB7C /* OCBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E53CC8016ECAA21007ADB7C /* OCBase64.m */; };
+		0E53CC8216ECAA21007ADB7C /* OCBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E53CC8016ECAA21007ADB7C /* OCBase64.m */; };
 		0E6B1F3B16A0BBE200659839 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E6B1F3A16A0BBE200659839 /* SystemConfiguration.framework */; };
 		0E6B1F3E16A0BBED00659839 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E6B1F3D16A0BBED00659839 /* MobileCoreServices.framework */; };
 		0E97440D165AAD11000C23EB /* OCCurrencyEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E97440C165AAD11000C23EB /* OCCurrencyEditViewController.m */; };
@@ -102,8 +106,10 @@
 		0E065E1216A091580040ADCB /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		0E49AE1516D224350072B5CE /* OCMintKeysViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCMintKeysViewController.m; sourceTree = "<group>"; };
 		0E49AE1716D224620072B5CE /* OCMintKeysViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMintKeysViewController.h; sourceTree = "<group>"; };
-		0E49AE4516D23DE90072B5CE /* FAQ.md */ = {isa = PBXFileReference; lastKnownFileType = text; name = FAQ.md; path = "../opencoin-memoranda/FAQ.md"; sourceTree = "<group>"; };
-		0E49AE4616D23DE90072B5CE /* opencoin-v3.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = "opencoin-v3.txt"; path = "../opencoin-memoranda/opencoin-v3.txt"; sourceTree = "<group>"; };
+		0E53CC7B16ECA740007ADB7C /* base64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = base64.c; path = 3rdParty/libbase64/src/base64.c; sourceTree = SOURCE_ROOT; };
+		0E53CC7C16ECA740007ADB7C /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = base64.h; path = 3rdParty/libbase64/src/base64.h; sourceTree = SOURCE_ROOT; };
+		0E53CC7F16ECAA21007ADB7C /* OCBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCBase64.h; sourceTree = "<group>"; };
+		0E53CC8016ECAA21007ADB7C /* OCBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCBase64.m; sourceTree = "<group>"; };
 		0E6B1F3A16A0BBE200659839 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0E6B1F3D16A0BBED00659839 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		0E97440B165AAD11000C23EB /* OCCurrencyEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCCurrencyEditViewController.h; sourceTree = "<group>"; };
@@ -121,6 +127,8 @@
 		0EC1BDE216CEDFB5007373DB /* AppIcon72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AppIcon72x72.png; path = ../AppIcon72x72.png; sourceTree = "<group>"; };
 		0EC1BDE416CEDFBD007373DB /* AppIcon144x144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AppIcon144x144.png; path = ../AppIcon144x144.png; sourceTree = "<group>"; };
 		0EC1BDE616CEE4A4007373DB /* Coin_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Coin_Icon.png; sourceTree = SOURCE_ROOT; };
+		0ECCE9C116D68B4C002716C1 /* FAQ.md */ = {isa = PBXFileReference; lastKnownFileType = text; name = FAQ.md; path = "../opencoin-memoranda/FAQ.md"; sourceTree = "<group>"; };
+		0ECCE9C216D68B4C002716C1 /* opencoin-v3.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = "opencoin-v3.txt"; path = "../opencoin-memoranda/opencoin-v3.txt"; sourceTree = "<group>"; };
 		0ED296C416A40C9700C43EA5 /* OCHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCHttpClient.h; sourceTree = "<group>"; };
 		0ED296C516A40C9700C43EA5 /* OCHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCHttpClient.m; sourceTree = "<group>"; };
 		0ED296C916A419AD00C43EA5 /* OCMintKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OCMintKey.h; path = model/OCMintKey.h; sourceTree = "<group>"; };
@@ -221,6 +229,17 @@
 			path = ../3rdParty/AFNetworking/AFNetworking;
 			sourceTree = "<group>";
 		};
+		0E53CC7A16ECA71D007ADB7C /* libbase64 */ = {
+			isa = PBXGroup;
+			children = (
+				0E53CC7B16ECA740007ADB7C /* base64.c */,
+				0E53CC7C16ECA740007ADB7C /* base64.h */,
+				0E53CC7F16ECAA21007ADB7C /* OCBase64.h */,
+				0E53CC8016ECAA21007ADB7C /* OCBase64.m */,
+			);
+			name = libbase64;
+			sourceTree = "<group>";
+		};
 		0ED4D20116C41A9900BD9E21 /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,8 +283,8 @@
 		0EFE4A061656ED7000B01440 = {
 			isa = PBXGroup;
 			children = (
-				0E49AE4516D23DE90072B5CE /* FAQ.md */,
-				0E49AE4616D23DE90072B5CE /* opencoin-v3.txt */,
+				0ECCE9C116D68B4C002716C1 /* FAQ.md */,
+				0ECCE9C216D68B4C002716C1 /* opencoin-v3.txt */,
 				0EFE4A1B1656ED7000B01440 /* src */,
 				0ED4D20116C41A9900BD9E21 /* UnitTests */,
 				0EFE4A141656ED7000B01440 /* Frameworks */,
@@ -300,6 +319,7 @@
 		0EFE4A1B1656ED7000B01440 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				0E53CC7A16ECA71D007ADB7C /* libbase64 */,
 				0E065DFF16A091580040ADCB /* AFNetworking */,
 				0EF001CE169AFC0200E13A69 /* model */,
 				0ED296C416A40C9700C43EA5 /* OCHttpClient.h */,
@@ -467,6 +487,8 @@
 				0ED4D23316C42D3D00BD9E21 /* OCHttpClient.m in Sources */,
 				0ED4D22B16C42A9C00BD9E21 /* OCIssuerTests.m in Sources */,
 				0ED4D20816C41A9900BD9E21 /* main.m in Sources */,
+				0E53CC7E16ECA740007ADB7C /* base64.c in Sources */,
+				0E53CC8216ECAA21007ADB7C /* OCBase64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,6 +521,8 @@
 				0ED296D316A6052000C43EA5 /* OCBlank.m in Sources */,
 				0E04DB4216A882F9000DCA4F /* OCBlindSignature.m in Sources */,
 				0E49AE1616D224350072B5CE /* OCMintKeysViewController.m in Sources */,
+				0E53CC7D16ECA740007ADB7C /* base64.c in Sources */,
+				0E53CC8116ECAA21007ADB7C /* OCBase64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

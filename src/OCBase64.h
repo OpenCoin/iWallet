@@ -10,10 +10,10 @@
 
 @interface OCBase64 : NSObject
 
-+(NSInteger) encode:(NSData*)input into:(NSString*) encoded;
++(NSInteger) encode:(NSData*)   input into:(NSString*) encoded;
 +(NSInteger) decode:(NSString*) input into:(NSData*) decoded;
 
-+(NSUInteger) enclen:(NSUInteger) l;
-+(NSUInteger) declen:(NSUInteger) l;
++(NSUInteger) enclen:(NSUInteger) inputlen;
++(NSUInteger) declen:(NSUInteger) inputlen;
 
 @end

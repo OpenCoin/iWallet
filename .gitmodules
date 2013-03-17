@@ -1,0 +1,3 @@
+[submodule "3rdParty/libbase64"]
+	path = 3rdParty/libbase64
+	url = https://github.com/kisom/libbase64.git
