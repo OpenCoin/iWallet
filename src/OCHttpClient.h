@@ -20,7 +20,10 @@
 
 -(void) getCDDSerial: (void (^)(NSNumber* serial, NSError *error))block;
 
+-(void) getCDD: (NSNumber*)serial success: (void (^)(OCCurrency* result, NSError *error))block;
+
 -(void) getLatestCDD: (void (^)(OCCurrency* result, NSError *error))block;
+-(void) getLatestCDDByGet: (void (^)(OCCurrency* result, NSError *error))block;
 -(void) getCDDbySerial:(NSInteger)serial              success:(void (^)(OCCurrency* result, NSError *error))block;
 
 -(void) getMintKeys: (void (^)(NSArray* result, NSError *error))block;
@@ -35,10 +38,9 @@ withTransactionReference: (NSInteger) transactionRef
                  success:(void (^)(NSArray* result, NSError *error))block;
 
 -(void)            renewalCoins: (NSArray*) coins
-           withBlinds: (NSArray*) blinds
            withMessageReference: (NSInteger) messageRef
        withTransactionReference: (NSInteger) transactionRef
           withAuthorisationInfo: (NSString*) authInfo
-                        success:(void (^)(NSArray* result, NSError *error))block;
+                        success:(void (^)(NSArray* blinds, NSError *error))block;
 
 @end

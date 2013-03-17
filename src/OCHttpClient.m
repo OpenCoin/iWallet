@@ -71,8 +71,44 @@
   
 }
 
+-(void) getCDD:(NSNumber*) serial success:(void (^)(OCCurrency* result, NSError *error))block
+{
+  NSDictionary* param = [NSDictionary dictionaryWithObjectsAndKeys:
+                         [[NSNumber numberWithInt:0] description] , @"message_reference"
+                         , @"request cdd"                    , @"type"
+                         , serial , @"cdd_serial"
+                         , nil];
+  
+  [self.client setParameterEncoding:AFJSONParameterEncoding];
+  [self.client postPath:@"/"
+             parameters:param
+                success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                 NSLog(@"%@", responseObject);
+                 
+                 if (block)
+                 {
+                   OCCurrency* c = [[OCCurrency alloc] initWithAttributes: [responseObject valueForKeyPath:@"cdd.cdd"]];
+                   block(c,nil);
+                 }
+               }
+   
+               failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                 NSLog(@"error %@", [error localizedDescription]);
+                 if (block)
+                 {
+                   block(nil,error);
+                 }
+                 
+               }];
+}
+
+-(void) getLatestCDD:(void (^)(OCCurrency* result, NSError *error))block
+{
+  return [self getCDD:nil success:block];
+}
+
 // common part of cdd requesting
--(void) getCDD:(NSString*) req success:(void (^)(OCCurrency* result, NSError *error))block
+-(void) getCDDByGet:(NSString*) req success:(void (^)(OCCurrency* result, NSError *error))block
 {
   [self.client getPath:req
             parameters:nil
@@ -96,15 +132,15 @@
                }];
 }
 
--(void) getLatestCDD:(void (^)(OCCurrency* result, NSError *error))block
+-(void) getLatestCDDByGet:(void (^)(OCCurrency* result, NSError *error))block
 {
-  [self getCDD:@"cdds/latest" success:block];
+  [self getCDDByGet:@"cdds/latest" success:block];
 }
 
 -(void) getCDDbySerial:(NSInteger)serial
                success:(void (^)(OCCurrency* result, NSError *error))block
 {
-  [self getCDD:[NSString stringWithFormat:@"cdds/serial/%d",serial]
+  [self getCDDByGet:[NSString stringWithFormat:@"cdds/serial/%d",serial]
        success:block];
 }
 
