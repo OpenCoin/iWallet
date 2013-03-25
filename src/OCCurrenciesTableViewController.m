@@ -14,10 +14,8 @@
 #import "AFJSONRequestOperation.h"
 
 @interface OCCurrenciesTableViewController ()
-@property(strong) NSMutableArray* currencies;
+@property(strong) NSArray* currencies;
 @end
-
-NSDictionary * d;
 
 @implementation OCCurrenciesTableViewController
 
@@ -33,47 +31,18 @@ NSDictionary * d;
 
 -(void) insertNewObject
 {
-  OCCurrency* c = [[OCCurrency alloc] initWithAttributes: nil];
-  [self.currencies addObject:c];
+  // OCCurrency* c = [[OCCurrency alloc] initWithAttributes: nil];
+  //  [self.currencies addObject:c];
   [self.tableView reloadData];
 }
 
 -(void) reload
 {
-  NSURL* baseURL = [NSURL URLWithString:@"https://mighty-lake-9219.herokuapp.com/gulden/" ];
-  
-  OCHttpClient* client = [[OCHttpClient alloc] initWithBaseURL:baseURL];
-  
-  [client getLatestCDD:^(OCCurrency *result, NSError *error)
-  {
-    if(!error)
-    {
-      [self.currencies removeAllObjects];
-      [self.currencies addObject:result];
-      [self.tableView reloadData];
-    }
-    else
-    {
-      NSLog(@"error %@", [error localizedDescription]);
-      [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:[error localizedDescription] delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
-    }
-  }
-  ];
-//  
-//  [client getMintKeys:^(NSArray *result, NSError *error) 
-//   {
-//     if(!error)
-//     {
-//       NSLog(@"%@",result);
-//     }
-//     else
-//     {
-//       NSLog(@"error %@", [error localizedDescription]);
-//       [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:[error localizedDescription] delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
-//     }
-//   }
-//   ];
-  
+  self.currencies = [OCCurrency currencies:^(OCCurrency *result, NSError *error) {
+    if(result)
+       [self.tableView reloadData];
+  }];
+  [self.tableView reloadData];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -84,7 +53,6 @@ NSDictionary * d;
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  self.currencies = [NSMutableArray arrayWithObjects:/*@"EUR",@"Baachbucks",@"Love",*/ nil];
   
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -94,6 +62,8 @@ NSDictionary * d;
                                                                            action:@selector(insertNewObject)];
   self.navigationItem.rightBarButtonItem = rButton;
   self.navigationItem.title = NSLocalizedString(@"Currencies",nil);
+
+  //  self.currencies = [OCCurrency currencies:];
 }
 
 - (void)didReceiveMemoryWarning
@@ -144,7 +114,7 @@ NSDictionary * d;
   switch(editingStyle)
   {
     case UITableViewCellEditingStyleDelete:  // Delete the row from the data source
-      [self.currencies removeObjectAtIndex:indexPath.row];
+      //[self.currencies removeObjectAtIndex:indexPath.row];
       [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
       break;
       
