@@ -8,12 +8,12 @@
 
 #import "OCMintKeysViewController.h"
 
-#import "OCBlank.h"
+#import "OCCurrency.h"
 #import "OCMintKey.h"
 #import "OCHttpClient.h"
 
 @interface OCMintKeysViewController ()
-@property(readonly) NSMutableArray* items;
+@property(readwrite) NSArray* currencies;
 @end
 
 @implementation OCMintKeysViewController
@@ -23,7 +23,6 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-      _items = [NSMutableArray array];
     }
     return self;
 }
@@ -31,23 +30,12 @@
 - (void)viewWillAppear:(BOOL)animated
 {
   [super viewWillAppear:animated];
-  NSURL* baseURL = [NSURL URLWithString:@"https://mighty-lake-9219.herokuapp.com/gulden/" ];
-  
-  OCHttpClient* client = [[OCHttpClient alloc] initWithBaseURL:baseURL];
-  
-  
+  self.currencies = [OCCurrency currencies:^(OCCurrency *result, NSError *error) {
+    [self.tableView reloadData];
+  }];
+  [self.tableView reloadData];
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -59,25 +47,32 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return [_currencies count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [[[_currencies objectAtIndex:section] mintKeys] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
+  static NSString *CellIdentifier = @"Cell";
+  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+  if (cell == nil)
+  {
+    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+                                  reuseIdentifier:CellIdentifier];
+  }
+  
+  OCCurrency* currencySection = [_currencies objectAtIndex:indexPath.section];
+  OCMintKey*          mintKey = [[currencySection mintKeys] objectAtIndex:indexPath.row];
+  
+  cell.textLabel.text = mintKey.debugDescription;
+  cell.detailTextLabel.text = mintKey.id;
+  
     return cell;
 }
 
@@ -121,6 +116,23 @@
 */
 
 #pragma mark - Table view delegate
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+  return [[_currencies objectAtIndex:section] currency_name];
+}
+
+
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+  NSMutableArray* titles = [[NSMutableArray alloc] initWithCapacity:_currencies.count];
+  
+  for (OCCurrency* section in _currencies) {
+    [titles addObject:section.currency_name];
+    
+  }
+  return titles;
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
