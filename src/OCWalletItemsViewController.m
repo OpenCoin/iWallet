@@ -79,6 +79,8 @@
     case 0:
       return self.buttons.count;
 
+    case 1:
+      return self.section2.count;
     default:
       return 1;
   }
@@ -102,9 +104,13 @@
       case 0:
         cell.textLabel.text = [[self.buttons allKeys] objectAtIndex:indexPath.row];
         break;
+      
+      case 1:
+        cell.textLabel.text = NSLocalizedString(@"Advanced", nil);
+        break;
         
       default:
-        break;
+        ;
     }
   
     return cell;
@@ -153,21 +159,31 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  Class c = [[self.buttons allValues] objectAtIndex:indexPath.row];
-  
-  UIViewController *detailViewController =[[c alloc] init];
+  UIViewController *detailViewController;
   
   switch(indexPath.section)
   {
     case 0:
+    {
+      Class c = [[self.buttons allValues] objectAtIndex:indexPath.row];
+      detailViewController =[[c alloc] init];
+    }
+    break;
+    
+    case 1:
+    {
+      Class c = [[self.section2 allValues] objectAtIndex:indexPath.row];
+      detailViewController =[[c alloc] init];
+    }
+    break;
       
-      break;
     default:
       detailViewController = nil;
   }
   
   // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
+  if (detailViewController)
+    [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
 @end
