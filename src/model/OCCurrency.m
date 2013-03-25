@@ -11,19 +11,23 @@
 #import "OCHttpClient.h"
 
 @interface OCCurrency ()
-
+@property OCHttpClient* client;
+@property(readwrite) NSArray* mintKeys;
 @end
-
 
 @implementation OCCurrency
 
 NSMutableArray* registeredCurrencies = nil;
 
-+ (NSArray*) currencies
++ (NSArray*) currencies:(void (^)(OCCurrency* result, NSError *error)) block
 {
   if (!registeredCurrencies)
   {
     registeredCurrencies = [[NSMutableArray alloc] initWithCapacity:3];
+    
+    [OCCurrency registerCurrency:[NSURL URLWithString:@"http://127.0.0.1:6789/" ] withCompletition:block];
+    [OCCurrency registerCurrency:[NSURL URLWithString:@"https://mighty-lake-9219.herokuapp.com/gulden/" ] withCompletition:block];
+    
   }
   return registeredCurrencies;
 }
@@ -32,16 +36,27 @@ NSMutableArray* registeredCurrencies = nil;
 {
   OCHttpClient* client = [[OCHttpClient alloc] initWithBaseURL:issuerURL];
   
-  [client getLatestCDD:^(OCCurrency *result, NSError *error) {
+  // This does not work on the server for now
+  //[client getLatestCDD:^(OCCurrency *result, NSError *error) {
+  
+  [client getCDDSerial:^(NSNumber *serial, NSError *error) {
     if (!error)
     {
-      [OCCurrency currencies];
-      [registeredCurrencies addObject:result];
+      [client getCDD:serial success:^(OCCurrency *result, NSError *error) {
+        if (!error)
+        {
+          [registeredCurrencies addObject:result];
+          result.client = client;
+        }
+
+        // call completion handler in any case
+        if (block)
+          block(result,error);
+        }];
     }
-    
-    if (block)
+    else if (block)
     {
-      block(result,error);
+        block(nil,error);
     }
   }];
 }
@@ -83,5 +98,24 @@ NSMutableArray* registeredCurrencies = nil;
   return self;
   
 }
+
+@synthesize mintKeys=_mintKeys;
+
+-(NSArray*) mintKeys
+{
+  if (!_mintKeys) {
+    [_client getMintKeys:^(NSArray *result, NSError *error) {
+      _mintKeys = result;
+    }];
+  }
+  return _mintKeys;
+}
+
+-(void)setMintKeys:(NSArray *)mintKeys
+{
+  _mintKeys = mintKeys;
+}
+
+
 
 @end

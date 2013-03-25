@@ -32,10 +32,10 @@
 @property(readonly) NSArray*   renewal_service;
 @property(readonly) NSArray*   validation_service;
 
-+ (NSArray*) currencies;
+@property(readonly) NSArray*   mintKeys;
+
++ (NSArray*) currencies:(void (^)(OCCurrency* result, NSError *error)) block;
 + (void) registerCurrency: (NSURL*) issuerURL withCompletition:(void (^)(OCCurrency* result, NSError *error)) block;
 
 - (id)initWithAttributes:(NSDictionary *)attributes;
-
-
 @end
