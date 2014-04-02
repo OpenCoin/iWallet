@@ -8,8 +8,9 @@
 
 #import "OCHttpClient.h"
 
-#import "AFHTTPClient.h"
-#import "AFJSONRequestOperation.h"
+#import "AFHTTPSessionManager.h"
+#import "AFURLRequestSerialization.h"
+#import "AFURLResponseSerialization.h"
 
 #import "OCBlank.h"
 #import "OCCurrency.h"
@@ -18,7 +19,7 @@
 
 @interface OCHttpClient()
 
-@property(readonly) AFHTTPClient* client;
+@property(readonly) AFHTTPSessionManager* client;
 
 @end
 
@@ -35,10 +36,13 @@
   self = [super init];
   if (self)
   {
-    _client = [AFHTTPClient clientWithBaseURL:url];
-    [_client networkReachabilityStatus];
-    [_client registerHTTPOperationClass:[AFJSONRequestOperation class]];
-    [_client setDefaultHeader:@"Accept" value:@"application/json"];
+    _client = [[AFHTTPSessionManager alloc] initWithBaseURL:url];
+    
+    AFJSONRequestSerializer* s = [AFJSONRequestSerializer serializerWithWritingOptions:0];
+    [s setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [_client setRequestSerializer:s];
+    
+    [_client setResponseSerializer:[AFJSONResponseSerializer serializerWithReadingOptions:0]];
   }
   return self;
 }
@@ -50,10 +54,9 @@
                           , @"request cdd serial"                    , @"type"
                           , nil];
   
-  [self.client setParameterEncoding:AFJSONParameterEncoding];
-  [self.client postPath:@"/"
+  [self.client POST:@"/"
              parameters:param
-                success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                success:^(NSURLSessionDataTask *operation, id responseObject) {
                   if (block)
                   {
                     NSNumber *result=nil;
@@ -62,7 +65,7 @@
                     block(result,nil);
                   }
                 }
-                failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                failure:^(NSURLSessionDataTask *operation, NSError *error) {
                   if (block)
                     block(nil,error);
                   NSLog(@"error %@",[error localizedDescription]);
@@ -79,10 +82,9 @@
                          , serial , @"cdd_serial"
                          , nil];
   
-  [self.client setParameterEncoding:AFJSONParameterEncoding];
-  [self.client postPath:@"/"
+  [self.client POST:@"/"
              parameters:param
-                success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                success:^(NSURLSessionDataTask *operation, id responseObject) {
                  NSLog(@"%@", responseObject);
                  
                  if (block)
@@ -92,7 +94,7 @@
                  }
                }
    
-               failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+               failure:^(NSURLSessionDataTask *operation, NSError *error) {
                  NSLog(@"error %@", [error localizedDescription]);
                  if (block)
                  {
@@ -110,9 +112,9 @@
 // common part of cdd requesting
 -(void) getCDDByGet:(NSString*) req success:(void (^)(OCCurrency* result, NSError *error))block
 {
-  [self.client getPath:req
+  [self.client GET:req
             parameters:nil
-               success:^(AFHTTPRequestOperation *operation, id responseObject) {
+               success:^(NSURLSessionDataTask *operation, id responseObject) {
                  NSLog(@"%@", responseObject);
                  
                  if (block)
@@ -122,7 +124,7 @@
                  }
                }
    
-               failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+               failure:^(NSURLSessionDataTask *operation, NSError *error) {
                  NSLog(@"error %@", [error localizedDescription]);
                  if (block)
                  {
@@ -151,10 +153,9 @@
                          , [[NSNumber numberWithInt:0] description] , @"message_reference"
                          , nil];
   
-  [self.client setParameterEncoding:AFJSONParameterEncoding];
-  [self.client postPath:@"/"
+  [self.client POST:@"/"
              parameters:param
-                success:^(AFHTTPRequestOperation *operation, id responseObject)
+                success:^(NSURLSessionDataTask *operation, id responseObject)
                 {
                     if (block)
                     {
@@ -171,7 +172,7 @@
                     }
                 }
    
-                failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                failure:^(NSURLSessionDataTask *operation, NSError *error) {
                   NSLog(@"error %@", [error localizedDescription]);
                   if (block)
                   {
@@ -189,7 +190,7 @@
   NSMutableArray* convertedBlanks = [NSMutableArray arrayWithCapacity:[blanks count]];
   for(OCBlank* blank in blanks)
   {
-    [convertedBlanks addObject:[blank toDictionary]];
+    [convertedBlanks addObject:[blank blindedHash]];
   }
   
   NSMutableDictionary* param = [[NSMutableDictionary alloc] initWithCapacity:5];
@@ -198,12 +199,11 @@
   [param setObject: [NSNumber numberWithInteger:messageRef]     forKey:@"message_reference"];
   [param setObject: [NSNumber numberWithInteger:transactionRef] forKey:@"transaction_reference"];
   [param setObject: authInfo                                    forKey:@"authorisation_info"];
-  [param setObject: convertedBlanks                             forKey:@"tokens"];
+  [param setObject: convertedBlanks                             forKey:@"blinds"];
   
-  [self.client setParameterEncoding:AFJSONParameterEncoding];
-  [self.client postPath:@"/"
+  [self.client POST:@"/"
              parameters:param
-                success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                success:^(NSURLSessionDataTask *operation, id responseObject) {
                   if (block)
                   {
                     NSLog(@"%@",responseObject);
@@ -218,7 +218,7 @@
                     block(blind_signatures,nil);
                   }
                 }
-                failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                failure:^(NSURLSessionDataTask *operation, NSError *error) {
                   if (block)
                     block(nil,error);
                   NSLog(@"error %@",[error localizedDescription]);
@@ -246,10 +246,9 @@
   [param setObject: authInfo                                    forKey:@"authorisation_info"];
   [param setObject: convertedCoins                              forKey:@"tokens"];
   
-  [self.client setParameterEncoding:AFJSONParameterEncoding];
-  [self.client postPath:@"/"
+  [self.client POST:@"/"
              parameters:param
-                success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                success:^(NSURLSessionDataTask *operation, id responseObject) {
                   if (block)
                   {
                     NSLog(@"%@",responseObject);
@@ -264,7 +263,7 @@
                     block(blind_signatures,nil);
                   }
                 }
-                failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                failure:^(NSURLSessionDataTask *operation, NSError *error) {
                   if (block)
                     block(nil,error);
                   NSLog(@"error %@",[error localizedDescription]);
@@ -275,9 +274,9 @@
 -(void) getMintKeysByGet:(NSString*) req
                  success:(void (^)(NSArray* result, NSError *error))block
 {
-  [self.client getPath:req
+  [self.client GET:req
             parameters:nil
-               success:^(AFHTTPRequestOperation *operation, id responseObject) {
+               success:^(NSURLSessionDataTask *operation, id responseObject) {
                  if (block)
                  {
                    NSMutableArray* keys = [NSMutableArray array];
@@ -292,7 +291,7 @@
                  }
                }
    
-               failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+               failure:^(NSURLSessionDataTask *operation, NSError *error) {
                  NSLog(@"error %@", [error localizedDescription]);
                  if (block)
                  {
