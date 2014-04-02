@@ -43,20 +43,26 @@ NSMutableArray* registeredCurrencies = nil;
     if (!error)
     {
       [client getCDD:serial success:^(OCCurrency *result, NSError *error) {
-        if (!error)
+        if (error)
+        {
+          if (block)
+            block(result,error);
+        }
+        else
         {
           [registeredCurrencies addObject:result];
           result.client = client;
+          [client getMintKeys:^(NSArray *mintkeys, NSError *error) {
+            result.mintKeys = mintkeys;
+            if (block)
+              block(result,error);
+          }];
         }
-
-        // call completion handler in any case
-        if (block)
-          block(result,error);
-        }];
+      }];
     }
     else if (block)
     {
-        block(nil,error);
+      block(nil,error);
     }
   }];
 }
