@@ -20,7 +20,7 @@
 
 @interface OCIssuerTests : GHAsyncTestCase { }
 @property(readonly) NSURL* JS_ISSUER_URL;
-@property(readonly) NSURL* SCALA_ISSUER_URL;
+//@property(readonly) NSURL* SCALA_ISSUER_URL;
 @property(readonly) NSURL* INVALID_URL;
 
 
@@ -32,7 +32,7 @@
 {
   [super setUp];
   _JS_ISSUER_URL      = [NSURL URLWithString:@"http://127.0.0.1:6789/" ];
-  _SCALA_ISSUER_URL   = [NSURL URLWithString:@"https://mighty-lake-9219.herokuapp.com/gulden/" ];
+  //  _SCALA_ISSUER_URL   = [NSURL URLWithString:@"https://mighty-lake-9219.herokuapp.com/gulden/" ];
   _INVALID_URL        = [NSURL URLWithString:@"https://mighty-lake-9219.herokuapp.com/nullar/" ];
   
   // Set-up code here.
@@ -65,12 +65,12 @@
   [self doTestGetCddSerial:self.JS_ISSUER_URL];
 }
 
--(void) testGetCddSerial_scala_issuer
-{
-  [self doTestGetCddSerial: self.SCALA_ISSUER_URL];
-}
+//-(void) testGetCddSerial_scala_issuer
+//{
+//  [self doTestGetCddSerial: self.SCALA_ISSUER_URL];
+//}
 
--(void) doTestGetCurrency:(NSURL*) baseURL withSerial:(NSNumber*) serial
+-(void) doTestGetCurrency:(NSURL*) baseURL withSerial:(int) serial
 {
   [self prepare];
   
@@ -79,7 +79,7 @@
   
   // test existing cdd
   OCHttpClient* client = [OCHttpClient clientWithBaseURL:baseURL];
-  [client getCDD: serial
+  [client getCDD: [NSNumber numberWithInt:serial]
          success: ^(OCCurrency *_result, NSError *_error) {
            result = _result;
            error = _error;
@@ -95,27 +95,25 @@
 
 -(void) testGetCurrencyWithValidSerial_js_issuer
 {
-  [self doTestGetCurrency:self.JS_ISSUER_URL
-               withSerial:[NSNumber numberWithInt:1] ];
+  [self doTestGetCurrency:self.JS_ISSUER_URL withSerial:1 ];
 }
 
--(void) testGetCurrencyWithValidSerial_scala_issuer
-{
-  [self doTestGetCurrency:self.SCALA_ISSUER_URL
-               withSerial:[NSNumber numberWithInt:1] ];
-}
+//-(void) testGetCurrencyWithValidSerial_scala_issuer
+//{
+//  [self doTestGetCurrency:self.SCALA_ISSUER_URL
+//               withSerial:1 ];
+//}
 
 -(void) testGetCurrencyWithInvalidSerial_js_issuer
 {
-  [self doTestGetCurrency:self.JS_ISSUER_URL
-               withSerial:[NSNumber numberWithInt:2] ];
+  [self doTestGetCurrency:self.JS_ISSUER_URL withSerial:2 ];
 }
 
--(void) testGetCurrencyWithInvalidSerial_scala_issuer
-{
-  [self doTestGetCurrency:self.SCALA_ISSUER_URL
-               withSerial:[NSNumber numberWithInt:2] ];
-}
+//-(void) testGetCurrencyWithInvalidSerial_scala_issuer
+//{
+//  [self doTestGetCurrency:self.SCALA_ISSUER_URL
+//               withSerial:2 ];
+//}
 
 -(void) testGetLatestCDD_js_issuer
 {
@@ -139,27 +137,27 @@
   GHAssertNil(error, @"no error awaited but got: %@",[error localizedDescription]);
 }
 
--(void) testGetLatestCDD_scala_issuer
-{
-  [self prepare];
-  
-  static OCCurrency *result;
-  static NSError *error;
-  
-  // test existing cdd
-  OCHttpClient* client = [OCHttpClient clientWithBaseURL:self.SCALA_ISSUER_URL];
-  [client getLatestCDD: ^(OCCurrency *_result, NSError *_error) {
-    result = _result;
-    error = _error;
-    [self notify:kGHUnitWaitStatusSuccess ];
-  }
-  ];
-  
-  [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
-  
-  GHAssertNotNil(result, @"no currencies returned: %@",result);
-  GHAssertNil(error, @"no error awaited but got: %@",[error localizedDescription]);
-}
+//-(void) testGetLatestCDD_scala_issuer
+//{
+//  [self prepare];
+//  
+//  static OCCurrency *result;
+//  static NSError *error;
+//  
+//  // test existing cdd
+//  OCHttpClient* client = [OCHttpClient clientWithBaseURL:self.SCALA_ISSUER_URL];
+//  [client getLatestCDD: ^(OCCurrency *_result, NSError *_error) {
+//    result = _result;
+//    error = _error;
+//    [self notify:kGHUnitWaitStatusSuccess ];
+//  }
+//  ];
+//  
+//  [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
+//  
+//  GHAssertNotNil(result, @"no currencies returned: %@",result);
+//  GHAssertNil(error, @"no error awaited but got: %@",[error localizedDescription]);
+//}
 
 -(void) testGetLatestCDD_InvalidURL
 {
@@ -210,10 +208,10 @@
   [self doTestLoadMintKeys:self.JS_ISSUER_URL];
 }
 
--(void) testLoadMintKeys_from_scala_issuer
-{
-  [self doTestLoadMintKeys:self.SCALA_ISSUER_URL];
-}
+//-(void) testLoadMintKeys_from_scala_issuer
+//{
+//  [self doTestLoadMintKeys:self.SCALA_ISSUER_URL];
+//}
 
 -(void) testLoadMintKeys_from_invalid_url
 {
@@ -239,42 +237,44 @@
 -(void) testValidateTokens_js_issuer
 {
   [self prepare];
-
-  //  OCCurrency* cdd = [[OCCurrency alloc] initWithAttributes:nil];
   
-  NSArray* blanks = [NSArray arrayWithObjects: [[OCBlank alloc] initWithAttributes:nil],
-                     [[OCBlank alloc] initWithAttributes:nil],
-                     [[OCBlank alloc] initWithAttributes:nil],
-                     nil];
-  
-  /*
-   NSArray* blanks = [NSArray arrayWithObjects: [OCBlank blankWithCurrency:cdd
-   WithDenomination:1
-   WithMintKey:nil],
-   [OCBlank blankWithCurrency:cdd
-   WithDenomination:1
-   WithMintKey:nil],
-   
-   nil];
-   */
   static NSArray *result;
+  static NSArray *blanks;
   static NSError *error;
-
-  // test existing url
-  OCHttpClient* client = [OCHttpClient clientWithBaseURL:self.JS_ISSUER_URL];
-  [client validateBlanks:blanks
-    WithMessageReference:23
-withTransactionReference:42
-   WithAuthorisationInfo:@"opencoin"
-                 success:^(NSArray *_result, NSError *_error) {
-                   result = _result;
-                   error = _error;
-                   [self notify:kGHUnitWaitStatusSuccess ];
-                 }];
+  [OCCurrency registerCurrency:self.JS_ISSUER_URL
+              withCompletition:^(OCCurrency *currency, NSError *_error)
+   {
+     OCMintKey* mintKey = [[currency mintKeys] objectAtIndex:0];
+     blanks = [NSArray arrayWithObjects:
+                        [OCBlank blankWithCurrency:currency
+                                  WithDenomination:1
+                                       WithMintKey:mintKey],
+                        
+                        [OCBlank blankWithCurrency:currency
+                                  WithDenomination:5
+                                       WithMintKey:mintKey],
+                        [OCBlank blankWithCurrency:currency
+                                  WithDenomination:10
+                                       WithMintKey:mintKey],
+                        nil];
+     
+     
+     // test existing url
+     OCHttpClient* client = [OCHttpClient clientWithBaseURL:self.JS_ISSUER_URL];
+     [client validateBlanks:blanks
+       WithMessageReference:23
+   withTransactionReference:42
+      WithAuthorisationInfo:@"opencoin"
+                    success:^(NSArray *_result, NSError *_error) {
+                      result = _result;
+                      [self notify:kGHUnitWaitStatusSuccess ];
+                    }];
+   }];
   [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
   
   GHAssertNotNil(result, @"no result returned: %@",result);
   GHAssertNil(error, @"no error awaited but got: %@",[error localizedDescription]);
+  GHAssertEquals([blanks count], [result count], @"coins and blinds should have the same count");
 }
 
 -(void) test_request_renewal_js_issuer {
@@ -315,8 +315,8 @@ withTransactionReference:42
   [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
   
   GHAssertNotNil(result, @"no result returned: %@",result);
-  GHAssertEquals([coins count], [result count], @"coins and blinds should have the same count");
   GHAssertNil(error, @"no error awaited but got: %@",[error localizedDescription]);
+  GHAssertEquals([coins count], [result count], @"coins and blinds should have the same count");
 }
 
 
