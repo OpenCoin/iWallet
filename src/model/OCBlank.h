@@ -15,7 +15,7 @@
 
 - (id) initWithAttributes:(NSDictionary *)attributes;
 - (NSDictionary*) toDictionary;
-
+- (NSDictionary*) blindedHash;
 
 +(OCBlank*) blankWithCurrency:(OCCurrency*) currency
              WithDenomination: (NSInteger) denomination
